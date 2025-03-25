@@ -1,0 +1,69 @@
+---
+/**
+ * Composant fil d'Ariane (breadcrumb) avec schema.org
+ */
+
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+  current?: boolean;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+  showOnMobile?: boolean;
+}
+
+const { 
+  items, 
+  class: className = '',
+  showOnMobile = true 
+} = Astro.props;
+
+// Construction du schema.org BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@id": item.url,
+      "name": item.name
+    }
+  }))
+};
+
+const schemaString = JSON.stringify(breadcrumbSchema);
+
+// Classes CSS
+const mobileClass = showOnMobile ? '' : 'hidden sm:flex';
+---
+
+<nav aria-label="Fil d'Ariane" class:list={["my-4", mobileClass, className]}>
+  <ol class="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400">
+    {items.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <span class="mx-2 text-gray-400">/</span>
+        )}
+        
+        {item.current ? (
+          <span aria-current="page" class="font-medium text-primary">
+            {item.name}
+          </span>
+        ) : (
+          <a 
+            href={item.url} 
+            class="hover:text-primary transition-colors duration-300"
+          >
+            {item.name}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={schemaString}></script>

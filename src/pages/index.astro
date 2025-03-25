@@ -1,0 +1,537 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import Icon from "../components/ui/Icon.astro";
+---
+
+<BaseLayout
+  title="NJI Auto Pro - Plateforme B2B pour professionnels de l'automobile"
+  description="Plateforme innovante B2B dédiée aux professionnels de l'automobile, offrant des solutions de gestion de parc et de vente par lots."
+>
+  <!-- Hero Section -->
+  <section id="plateforme-b2b" class="relative overflow-hidden pt-24 pb-32">
+    <!-- Gradient Background -->
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 z-0"
+    >
+    </div>
+
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 z-0 opacity-20 dark:opacity-10">
+      <div
+        class="absolute -top-24 -left-24 w-96 h-96 bg-[var(--color-primary-700)]/30 rounded-full filter blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute top-1/2 right-0 w-80 h-80 bg-indigo-500/20 rounded-full filter blur-3xl"
+      >
+      </div>
+    </div>
+
+    <!-- Subtle Grid Pattern -->
+    <div
+      class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+      style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 40px 40px;"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+          Plateforme B2B automobile
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white tracking-tight mb-6 leading-[1.1]">
+          Développez votre activité<br />
+          <span class="text-3xl md:text-4xl lg:text-5xl font-light text-[var(--color-primary-700)]">à l'échelle professionnelle</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+          NJI Auto Pro est la plateforme B2B qui simplifie la gestion et la vente de véhicules 
+          pour les professionnels de l'automobile.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Button
+            variant="green"
+            size="lg"
+            href="/auth/register"
+            class="px-8 py-4 rounded-md shadow-lg shadow-[var(--color-primary-700)]/20 hover:shadow-[var(--color-primary-700)]/30 transition-all duration-300"
+          >
+            Commencer un projet
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="ml-2"
+              ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+            >
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href="/vehicules"
+            class="px-8 py-4 rounded-md border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            Explorer le catalogue
+          </Button>
+        </div>
+        
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+          NJI Auto Pro est une plateforme dédiée aux professionnels de l'automobile.
+        </p>
+        <p class="text-base text-gray-700 dark:text-gray-300 font-medium mb-12">
+          Démarrez votre projet avec une base de données Postgres, authentification,<br class="hidden md:block" /> 
+          APIs instantanées, et une gestion de parc complète.
+        </p>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
+          <div
+            class="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+          >
+            <p class="text-3xl md:text-4xl font-medium text-[var(--color-primary-700)] mb-1">
+              15K+
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Véhicules disponibles
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+          >
+            <p class="text-3xl md:text-4xl font-medium text-[var(--color-primary-700)] mb-1">
+              500+
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Professionnels actifs
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+          >
+            <p class="text-3xl md:text-4xl font-medium text-[var(--color-primary-700)] mb-1">
+              98%
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Taux de satisfaction
+            </p>
+          </div>
+          <div
+            class="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+          >
+            <p class="text-3xl md:text-4xl font-medium text-[var(--color-primary-700)] mb-1">
+              24h
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Délai moyen de livraison
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marques partenaires -->
+  <section
+    id="marques-partenaires"
+    class="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
+  >
+    <div class="container mx-auto px-4">
+      <p
+        class="text-center text-gray-500 dark:text-gray-400 mb-10 text-sm font-medium tracking-wider uppercase"
+      >
+        Plateforme de confiance pour les leaders de l'industrie automobile
+      </p>
+      <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
+        <!-- Logos de partenaires en version simplifiée avec du texte -->
+        <div
+          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="font-medium text-lg md:text-xl tracking-tight">BMW</div>
+        </div>
+        <div
+          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="font-medium text-lg md:text-xl tracking-tight">
+            MERCEDES
+          </div>
+        </div>
+        <div
+          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="font-medium text-lg md:text-xl tracking-tight">AUDI</div>
+        </div>
+        <div
+          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="font-medium text-lg md:text-xl tracking-tight">RENAULT</div>
+        </div>
+        <div
+          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="font-medium text-lg md:text-xl tracking-tight">TOYOTA</div>
+        </div>
+        <div
+          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="font-medium text-lg md:text-xl tracking-tight">
+            VOLKSWAGEN
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Caractéristiques principales -->
+  <section
+    id="tout-en-un"
+    class="py-24 bg-gray-50 dark:bg-gray-800 relative overflow-hidden"
+  >
+    <!-- Background Gradient -->
+    <div
+      class="absolute right-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tl from-[var(--color-primary-700)]/10 to-transparent rounded-tl-full z-0"
+    >
+    </div>
+
+    <!-- Background Pattern -->
+    <div
+      class="absolute top-0 left-0 w-full h-full z-0 opacity-[0.02] dark:opacity-[0.05]"
+      style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 30px 30px;"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <div
+          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6"
+        >
+          <span
+            class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"
+          ></span>
+          Tout-en-un
+        </div>
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight"
+        >
+          Une solution complète pour les professionnels
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300">
+          Tous les outils dont vous avez besoin pour optimiser votre activité
+          automobile.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Caractéristique 1 -->
+        <div
+          class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group"
+        >
+          <div
+            class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[var(--color-primary-700)]"
+            >
+              <path
+                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.3 1 12.1 1 13v3c0 .6.4 1 1 1h2"
+              ></path>
+              <circle cx="7" cy="17" r="2"></circle>
+              <path d="M9 17h6"></path>
+              <circle cx="17" cy="17" r="2"></circle>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            Gestion de parc
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Suivez et gérez votre inventaire de véhicules avec précision.
+            Tableaux de bord intuitifs et rapports détaillés pour optimiser vos
+            stocks.
+          </p>
+        </div>
+
+        <!-- Caractéristique 2 -->
+        <div
+          class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group"
+        >
+          <div
+            class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[var(--color-primary-700)]"
+            >
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            Analyse de marché
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Accédez à des données en temps réel sur les tendances du marché.
+            Prenez des décisions basées sur des informations précises et à jour.
+          </p>
+        </div>
+
+        <!-- Caractéristique 3 -->
+        <div
+          class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group"
+        >
+          <div
+            class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-[var(--color-primary-700)]"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            CRM spécialisé
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Gérez vos contacts, suivez les leads et organisez votre activité
+            commerciale avec notre CRM dédié au secteur automobile.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment ça marche -->
+  <section
+    id="processus-simple"
+    class="py-24 bg-white dark:bg-gray-900 relative overflow-hidden"
+  >
+    <!-- Background Shape -->
+    <div
+      class="absolute left-0 top-1/4 w-64 h-64 bg-[var(--color-primary-700)]/5 rounded-full -translate-x-1/2 z-0"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <div
+          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6"
+        >
+          <span
+            class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"
+          ></span>
+          Processus simple
+        </div>
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white mb-6"
+        >
+          Comment ça marche
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300">
+          Un processus simple et efficace pour optimiser votre activité
+        </p>
+      </div>
+
+      <div class="relative max-w-5xl mx-auto">
+        <!-- Ligne de connexion -->
+        <div
+          class="hidden md:block absolute top-16 left-1/2 h-0.5 bg-gray-200 dark:bg-gray-700 z-0"
+          style="width: calc(100% - 120px); transform: translateX(-50%);"
+        >
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Étape 1 -->
+          <div class="relative text-center group">
+            <div
+              class="w-16 h-16 bg-white dark:bg-gray-900 border-2 border-[var(--color-primary-700)] rounded-full flex items-center justify-center mx-auto mb-4 text-[var(--color-primary-700)] font-medium text-xl z-10 group-hover:bg-[var(--color-primary-700)] group-hover:text-white transition-colors duration-300"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              Inscription
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Créez votre compte professionnel en quelques minutes
+            </p>
+          </div>
+
+          <!-- Étape 2 -->
+          <div class="relative text-center group">
+            <div
+              class="w-16 h-16 bg-white dark:bg-gray-900 border-2 border-[var(--color-primary-700)] rounded-full flex items-center justify-center mx-auto mb-4 text-[var(--color-primary-700)] font-medium text-xl z-10 group-hover:bg-[var(--color-primary-700)] group-hover:text-white transition-colors duration-300"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              Configuration
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Personnalisez votre espace selon vos besoins spécifiques
+            </p>
+          </div>
+
+          <!-- Étape 3 -->
+          <div class="relative text-center group">
+            <div
+              class="w-16 h-16 bg-white dark:bg-gray-900 border-2 border-[var(--color-primary-700)] rounded-full flex items-center justify-center mx-auto mb-4 text-[var(--color-primary-700)] font-medium text-xl z-10 group-hover:bg-[var(--color-primary-700)] group-hover:text-white transition-colors duration-300"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              Utilisation
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Gérez votre parc et développez votre activité
+            </p>
+          </div>
+
+          <!-- Étape 4 -->
+          <div class="relative text-center group">
+            <div
+              class="w-16 h-16 bg-white dark:bg-gray-900 border-2 border-[var(--color-primary-700)] rounded-full flex items-center justify-center mx-auto mb-4 text-[var(--color-primary-700)] font-medium text-xl z-10 group-hover:bg-[var(--color-primary-700)] group-hover:text-white transition-colors duration-300"
+            >
+              4
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              Croissance
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Analysez vos performances et optimisez vos résultats
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section
+    id="demarrez-maintenant"
+    class="py-24 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden"
+  >
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 z-0 opacity-30">
+      <div
+        class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-[var(--color-primary-700)]/20 to-transparent rounded-bl-full"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-t from-[var(--color-primary-700)]/20 to-transparent rounded-tr-full"
+      >
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div
+        class="max-w-4xl mx-auto bg-white dark:bg-gray-900 p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 text-center"
+      >
+        <div
+          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6"
+        >
+          <span
+            class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"
+          ></span>
+          Démarrez maintenant
+        </div>
+        <h2
+          class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-6"
+        >
+          Prêt à optimiser votre activité automobile?
+        </h2>
+        <p
+          class="text-lg text-gray-600 dark:text-gray-300 mb-8 mx-auto max-w-2xl"
+        >
+          Rejoignez notre réseau de professionnels et accédez à notre plateforme
+          exclusive. Notre équipe est à votre disposition pour vous accompagner.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            variant="green"
+            size="lg"
+            href="/auth/register"
+            class="px-8 py-4 rounded-md shadow-lg shadow-[var(--color-primary-700)]/20 hover:shadow-[var(--color-primary-700)]/30 transition-all duration-300"
+          >
+            Demander un accès
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="ml-2"
+              ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+            >
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            href="/contact"
+            class="px-8 py-4 rounded-md"
+          >
+            Nous contacter
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Animation pour les éléments au survol */
+  .group:hover .group-hover\:bg-\[var\(--color-primary-700\)\] {
+    background-color: var(--color-primary-700);
+  }
+
+  .group:hover .group-hover\:text-white {
+    color: white;
+  }
+
+  /* Animation pour les cartes de caractéristiques */
+  .group:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Dégradé de texte pour les titres highlights */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary-700)] to-[var(--color-primary-500)];
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+  <!-- Section principale du footer -->
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Logo et description -->
+      <div class="md:col-span-1">
+        <div class="flex items-center mb-4">
+          <span class="text-xl font-bold text-primary dark:text-primary mr-1">NJI</span>
+          <span class="text-xl font-medium text-gray-900 dark:text-white">Auto Pro</span>
+        </div>
+        
+        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+          Plateforme B2B spécialisée pour les professionnels de l'automobile, offrant des solutions innovantes de gestion de parc et de vente par lots.
+        </p>
+      </div>
+      
+      <!-- Produit -->
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+          Produit
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/vehicules" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Véhicules
+            </a>
+          </li>
+          <li>
+            <a href="/services" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Services
+            </a>
+          </li>
+          <li>
+            <a href="/tarification" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Tarification
+            </a>
+          </li>
+          <li>
+            <a href="/documentation" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Documentation
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Entreprise -->
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+          Entreprise
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/a-propos" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              À propos
+            </a>
+          </li>
+          <li>
+            <a href="/blog" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Contact
+            </a>
+          </li>
+          <li>
+            <a href="/carrieres" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Carrières
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Légal -->
+      <div>
+        <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+          Légal
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/mentions-legales" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Mentions légales
+            </a>
+          </li>
+          <li>
+            <a href="/cgv" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Conditions générales
+            </a>
+          </li>
+          <li>
+            <a href="/confidentialite" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Politique de confidentialité
+            </a>
+          </li>
+          <li>
+            <a href="/cookies" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors text-sm">
+              Politique de cookies
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Copyright -->
+  <div class="border-t border-gray-100 dark:border-gray-800">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="text-sm text-gray-500 dark:text-gray-400">
+          &copy; {currentYear} NJI Auto Pro. Tous droits réservés.
+        </div>
+        
+        <div class="flex items-center mt-4 md:mt-0">
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Theme toggle -->
+          <button 
+            id="footer-theme-toggle"
+            aria-label="Changer le thème"
+            class="ml-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block">
+              <circle cx="12" cy="12" r="5"></circle>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Gestion du thème dans le footer
+  document.addEventListener('DOMContentLoaded', () => {
+    const footerThemeToggle = document.getElementById('footer-theme-toggle');
+    
+    if (footerThemeToggle) {
+      footerThemeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  a {
+    transition: color 0.2s ease;
+  }
+</style>

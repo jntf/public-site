@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/ui/Icon.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import Button from '../components/ui/Button.astro';
+
+// Données pour le fil d'Ariane
+const breadcrumbItems = [
+  { name: 'Accueil', url: '/' },
+  { name: 'À propos', url: '/a-propos', current: true },
+];
+
+// Données de l'équipe
+const teamMembers = [
+  {
+    name: 'Julien Martin',
+    role: 'Fondateur & CEO',
+    image: 'https://via.placeholder.com/300',
+    description: 'Plus de 22 ans d\'expérience dans l\'industrie automobile, spécialisé dans la vente B2B et le développement technologique.',
+  },
+  {
+    name: 'Sophie Dubois',
+    role: 'Directrice Commerciale',
+    image: 'https://via.placeholder.com/300',
+    description: 'Expert en relations commerciales B2B avec 15 ans d\'expérience dans le secteur automobile et la gestion de grands comptes.',
+  },
+  {
+    name: 'Marc Lefevre',
+    role: 'Responsable Technique',
+    image: 'https://via.placeholder.com/300',
+    description: 'Ingénieur en logiciel avec une passion pour l\'automobile, spécialisé dans le développement de solutions digitales pour le secteur.',
+  },
+];
+
+// Données des partenaires
+const partners = [
+  { name: 'Partenaire 1', logo: 'https://via.placeholder.com/150x80' },
+  { name: 'Partenaire 2', logo: 'https://via.placeholder.com/150x80' },
+  { name: 'Partenaire 3', logo: 'https://via.placeholder.com/150x80' },
+  { name: 'Partenaire 4', logo: 'https://via.placeholder.com/150x80' },
+  { name: 'Partenaire 5', logo: 'https://via.placeholder.com/150x80' },
+  { name: 'Partenaire 6', logo: 'https://via.placeholder.com/150x80' },
+];
+---
+
+<BaseLayout
+  title="À propos de NJI Auto Pro | La référence automobile B2B"
+  description="Découvrez l'histoire et les valeurs de NJI Auto Pro, la plateforme B2B innovante dédiée aux professionnels de l'automobile."
+>
+  <div class="container mx-auto px-4 py-8">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <!-- Hero Section -->
+    <section id="mission" class="relative overflow-hidden pt-12 pb-24">
+      <!-- Gradient Background -->
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 z-0"></div>
+      
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 z-0 opacity-20 dark:opacity-10">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-[var(--color-primary-700)]/30 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/20 rounded-full filter blur-3xl"></div>
+      </div>
+      
+      <!-- Subtle Grid Pattern -->
+      <div class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+        style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 40px 40px;">
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div>
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Notre histoire
+          </div>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Notre mission: <span class="text-[var(--color-primary-700)]">Révolutionner</span> le commerce automobile B2B
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            Fondée en 2023 par des professionnels du secteur automobile, NJI Auto Pro est née d'une vision simple mais ambitieuse : créer la plateforme digitale de référence pour les professionnels de l'automobile en Europe.
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            Nous combinons technologie avancée et expertise sectorielle pour offrir une expérience B2B fluide, transparente et efficace.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="absolute -top-4 -left-4 w-28 h-28 bg-[var(--color-primary-700)]/10 rounded-full blur-2xl"></div>
+          <div class="absolute -bottom-8 -right-8 w-36 h-36 bg-[var(--color-primary-700)]/10 rounded-full blur-3xl"></div>
+          <img 
+            src="https://via.placeholder.com/600x400" 
+            alt="Équipe NJI Auto Pro" 
+            class="rounded-xl shadow-lg relative z-10 w-full h-auto"
+          />
+        </div>
+      </div>
+    </section>
+    
+    <!-- Notre histoire -->
+    <section id="histoire" class="py-16 bg-white dark:bg-gray-900 rounded-2xl relative overflow-hidden my-12">
+      <!-- Background Pattern -->
+      <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-[var(--color-primary-700)]/10 to-transparent rounded-bl-full z-0"></div>
+      <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-t from-[var(--color-primary-700)]/10 to-transparent rounded-tr-full z-0"></div>
+      
+      <div class="max-w-3xl mx-auto relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Notre parcours
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            Notre histoire
+          </h2>
+        </div>
+        
+        <div class="space-y-12">
+          <div class="relative pl-8 sm:pl-32">
+            <div class="absolute left-0 sm:left-12 top-2 h-full border-l-2 border-[var(--color-primary-700)]"></div>
+            <div class="absolute left-0 sm:left-10 top-2 w-4 h-4 rounded-full bg-[var(--color-primary-700)]"></div>
+            <div class="sm:pl-8">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">2023 - La naissance d'une idée</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Après plus de deux décennies dans l'industrie automobile, notre fondateur Julien Martin identifie un besoin crucial: une plateforme digitale B2B moderne, transparente et efficace pour révolutionner les transactions entre professionnels du secteur. NJI Auto Pro est lancée avec une équipe de 5 collaborateurs passionnés.
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative pl-8 sm:pl-32">
+            <div class="absolute left-0 sm:left-12 top-2 h-full border-l-2 border-[var(--color-primary-700)]"></div>
+            <div class="absolute left-0 sm:left-10 top-2 w-4 h-4 rounded-full bg-[var(--color-primary-700)]"></div>
+            <div class="sm:pl-8">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">2024 - Croissance et expansion</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Face au succès rapide de notre plateforme, l'équipe s'agrandit à 25 collaborateurs. Nous développons de nouvelles fonctionnalités et élargissons notre présence à 8 pays européens. Plus de 300 professionnels nous font confiance.
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative pl-8 sm:pl-32">
+            <div class="absolute left-0 sm:left-12 top-2 h-full border-l-2 border-dashed border-[var(--color-primary-700)]"></div>
+            <div class="absolute left-0 sm:left-10 top-2 w-4 h-4 rounded-full bg-[var(--color-primary-700)]"></div>
+            <div class="sm:pl-8">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">2025 - Vers l'avenir</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Avec désormais 500+ professionnels actifs sur notre plateforme et plus de 15 000 véhicules disponibles, NJI Auto Pro continue son expansion. Notre ambition : devenir la référence incontournable du secteur avec de nouveaux services innovants et une couverture complète du marché européen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Nos valeurs -->
+    <section id="valeurs" class="py-16 bg-gray-50 dark:bg-gray-800/30 rounded-2xl my-12 relative overflow-hidden">
+      <!-- Background Decoration -->
+      <div class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+        style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 30px 30px;">
+      </div>
+      
+      <div class="relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Ce qui nous définit
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Nos valeurs
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Chaque jour, nous nous efforçons de construire une entreprise fondée sur des valeurs fortes qui guident toutes nos actions.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300">
+              <Icon name="lucide:award" class="h-6 w-6 text-[var(--color-primary-700)]" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Excellence</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Nous visons l'excellence dans chaque aspect de notre activité, de la technologie au service client, en passant par la sélection rigoureuse des véhicules sur notre plateforme.
+            </p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300">
+              <Icon name="lucide:lightbulb" class="h-6 w-6 text-[var(--color-primary-700)]" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Innovation</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Nous cherchons constamment à repousser les limites et à innover dans un secteur traditionnel, en apportant des solutions digitales de pointe et des processus optimisés.
+            </p>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group">
+            <div class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300">
+              <Icon name="lucide:shield" class="h-6 w-6 text-[var(--color-primary-700)]" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Confiance</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              La confiance est au cœur de notre modèle. Nous garantissons des transactions sécurisées, transparentes et justes pour tous nos utilisateurs professionnels.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Notre équipe -->
+    <section id="equipe" class="py-16 bg-white dark:bg-gray-900 rounded-2xl relative overflow-hidden">
+      <!-- Background Decoration -->
+      <div class="absolute right-0 bottom-0 w-1/2 h-1/2 bg-gradient-to-tl from-[var(--color-primary-700)]/10 to-transparent rounded-tl-full z-0"></div>
+      
+      <div class="relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Nos experts
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Notre équipe
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Des experts passionnés par l'automobile et la technologie, déterminés à révolutionner le secteur.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {teamMembers.map(member => (
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all duration-300 group">
+              <img 
+                src={member.image} 
+                alt={member.name}
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-1">{member.name}</h3>
+                <p class="text-[var(--color-primary-700)] font-medium mb-4">{member.role}</p>
+                <p class="text-gray-600 dark:text-gray-400">
+                  {member.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Nos partenaires -->
+    <section id="partenaires" class="py-16 bg-gray-50 dark:bg-gray-800/30 rounded-2xl my-12 relative overflow-hidden">
+      <!-- Background Decoration -->
+      <div class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+        style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 30px 30px;">
+      </div>
+      
+      <div class="relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Nos collaborations
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Nos partenaires
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Nous collaborons avec les meilleurs acteurs du secteur pour vous garantir un service de qualité.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {partners.map(partner => (
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+              <img 
+                src={partner.logo} 
+                alt={partner.name}
+                class="max-h-16"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA -->
+    <section id="contact" class="py-16">
+      <div class="bg-gradient-to-r from-[var(--color-primary-700)]/20 to-[var(--color-primary-700)]/10 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute inset-0 z-0 opacity-30">
+          <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-white/20 to-transparent rounded-bl-full"></div>
+          <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-t from-white/20 to-transparent rounded-tr-full"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-white mr-2"></span>
+            Rejoignez-nous
+          </div>
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            Prêt à rejoindre la révolution automobile B2B?
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-8">
+            Devenez membre de notre réseau de professionnels et accédez à notre plateforme exclusive.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="green"
+              size="lg"
+              href="/auth/register"
+              class="px-8 py-4 rounded-md shadow-[var(--color-primary-700)]/20 hover:shadow-[var(--color-primary-700)]/30 transition-all duration-300"
+            >
+              Demander un accès
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="ml-2"
+              ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              href="/contact"
+              class="px-8 py-4 rounded-md bg-white/10 backdrop-blur-sm border-white/20 text-gray-900 dark:text-white hover:bg-white/20"
+            >
+              <Icon name="lucide:mail" class="h-5 w-5 mr-2" />
+              Nous contacter
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Animation pour les éléments au survol */
+  .group:hover {
+    transform: translateY(-2px);
+  }
+  
+  .group:hover .group-hover\:bg-\[var\(--color-primary-700\)\]\/20 {
+    background-color: var(--color-primary-700)/0.2;
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+/**
+ * Composant bouton standard
+ */
+interface Props {
+  /**
+   * Variante du bouton
+   */
+  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'green';
+  
+  /**
+   * Taille du bouton
+   */
+  size?: 'default' | 'xs' | 'sm' | 'lg' | 'icon';
+  
+  /**
+   * Classes CSS additionnelles
+   */
+  class?: string;
+  
+  /**
+   * Type de bouton
+   */
+  type?: 'button' | 'submit' | 'reset';
+  
+  /**
+   * Attribut href (convertit le bouton en lien)
+   */
+  href?: string;
+  
+  /**
+   * Est-ce que le bouton est désactivé
+   */
+  disabled?: boolean;
+
+  /**
+   * ID du bouton
+   */
+  id?: string;
+}
+
+const { 
+  variant = 'default', 
+  size = 'default', 
+  class: className = '', 
+  type = 'button',
+  href,
+  disabled = false,
+  ...rest
+} = Astro.props;
+
+// Définir les classes de base
+const baseClasses = 'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-700)]/50 disabled:pointer-events-none disabled:opacity-50';
+
+// Classes pour les différentes variantes
+const variantClasses = {
+  default: 'bg-gray-900 text-white hover:bg-gray-800 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-100',
+  destructive: 'bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700',
+  outline: 'border border-gray-200 bg-white hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-800',
+  secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-700',
+  ghost: 'hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50',
+  link: 'text-gray-900 underline-offset-4 hover:underline dark:text-gray-50',
+  green: 'bg-[var(--color-primary-700)] text-white hover:bg-[var(--color-primary-600)] border border-[var(--color-primary-800)] shadow-sm hover:shadow-[var(--color-primary-700)]/20 dark:border-[var(--color-primary-600)]'
+};
+
+// Classes pour les différentes tailles
+const sizeClasses = {
+  'xs': 'h-7 px-2 text-xs',
+  'sm': 'h-8 px-3 text-sm',
+  'default': 'h-10 px-4 py-2',
+  'lg': 'h-12 px-6 py-3 text-base',
+  'icon': 'h-10 w-10',
+};
+
+// Combiner les classes
+const buttonClasses = [
+  baseClasses,
+  variantClasses[variant],
+  sizeClasses[size],
+  className,
+];
+
+// Déterminer si c'est un bouton ou un lien
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+  {...href ? { href } : { type }}
+  class:list={buttonClasses}
+  {...disabled && { disabled }}
+  {...rest}
+>
+  <slot />
+</Element>

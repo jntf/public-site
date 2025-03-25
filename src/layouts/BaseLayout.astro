@@ -1,0 +1,78 @@
+---
+import { SEO } from 'astro-seo';
+import Header from '../components/core/Header.astro';
+import Footer from '../components/core/Footer.astro';
+import '../styles/global.css';
+
+// Props pour le SEO et le contenu
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noIndex?: boolean;
+  noFollow?: boolean;
+}
+
+// Valeurs par défaut
+const {
+  title = "NJI Auto Pro - Plateforme B2B pour professionnels de l'automobile",
+  description = "Plateforme innovante B2B dédiée aux professionnels de l'automobile, offrant des solutions de gestion de parc et de vente par lots.",
+  image = "/images/og-default.jpg",
+  canonical,
+  noIndex = false,
+  noFollow = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical || Astro.url.pathname}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: image,
+        },
+        optional: {
+          description: description,
+        }
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: image,
+      }}
+      extend={{
+        meta: [
+          { name: "theme-color", content: "#6DD8A4" },
+          { name: "mobile-web-app-capable", content: "yes" },
+          { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+          ...(noIndex ? [{ name: "robots", content: "noindex" }] : []),
+          ...(noFollow ? [{ name: "robots", content: "nofollow" }] : []),
+        ],
+        link: [
+          { rel: "preconnect", href: "https://fonts.googleapis.com" },
+          { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
+          { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" },
+        ],
+      }}
+    />
+  </head>
+  <body class="bg-white dark:bg-gray-900">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

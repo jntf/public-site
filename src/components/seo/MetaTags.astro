@@ -1,0 +1,134 @@
+---
+/**
+ * Composant pour gérer les métadonnées SEO spécifiques au secteur automobile
+ */
+
+import { SEO } from 'astro-seo';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article' | 'product' | 'vehicle';
+  locale?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  category?: string;
+  tags?: string[];
+  vehicleProps?: {
+    brand?: string;
+    model?: string;
+    year?: number;
+    price?: number;
+    condition?: string;
+    bodyType?: string;
+    fuelType?: string;
+  };
+  noIndex?: boolean;
+  noFollow?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.jpg',
+  canonical,
+  type = 'website',
+  locale = 'fr_FR',
+  publishedTime,
+  modifiedTime,
+  category,
+  tags = [],
+  vehicleProps = {},
+  noIndex = false,
+  noFollow = false,
+} = Astro.props;
+
+// Fusionner l'URL canonique
+const canonicalUrl = canonical || Astro.url.pathname;
+
+// Métadonnées de base
+const openGraph = {
+  basic: {
+    title: title,
+    type: type,
+    image: image,
+  },
+  optional: {
+    description: description,
+    locale: locale,
+    siteName: 'NJI Auto Pro',
+  },
+};
+
+// Métadonnées pour articles
+if (type === 'article') {
+  openGraph.article = {
+    publishedTime: publishedTime,
+    modifiedTime: modifiedTime,
+    section: category,
+    tags: tags,
+  };
+}
+
+// Métadonnées spécifiques aux véhicules
+const extendedMeta = [
+  { name: "theme-color", content: "#6DD8A4" },
+  { name: "mobile-web-app-capable", content: "yes" },
+  { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+  ...(noIndex ? [{ name: "robots", content: "noindex" }] : []),
+  ...(noFollow ? [{ name: "robots", content: "nofollow" }] : []),
+];
+
+// Ajouter des méta spécifiques aux véhicules si disponibles
+if (type === 'vehicle' || type === 'product') {
+  if (vehicleProps.brand) {
+    extendedMeta.push({ name: 'vehicle:brand', content: vehicleProps.brand });
+  }
+  if (vehicleProps.model) {
+    extendedMeta.push({ name: 'vehicle:model', content: vehicleProps.model });
+  }
+  if (vehicleProps.year) {
+    extendedMeta.push({ name: 'vehicle:year', content: String(vehicleProps.year) });
+  }
+  if (vehicleProps.price) {
+    extendedMeta.push({ name: 'product:price:amount', content: String(vehicleProps.price) });
+    extendedMeta.push({ name: 'product:price:currency', content: 'EUR' });
+  }
+  if (vehicleProps.condition) {
+    extendedMeta.push({ name: 'vehicle:condition', content: vehicleProps.condition });
+  }
+  if (vehicleProps.bodyType) {
+    extendedMeta.push({ name: 'vehicle:body_type', content: vehicleProps.bodyType });
+  }
+  if (vehicleProps.fuelType) {
+    extendedMeta.push({ name: 'vehicle:fuel_type', content: vehicleProps.fuelType });
+  }
+}
+
+// Configuration complète pour SEO
+const seoConfig = {
+  title: title,
+  description: description,
+  canonical: canonicalUrl,
+  openGraph: openGraph,
+  twitter: {
+    card: 'summary_large_image',
+    title: title,
+    description: description,
+    image: image,
+    site: '@NJIAutoPro',
+  },
+  extend: {
+    meta: extendedMeta,
+    link: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: true },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" },
+    ],
+  },
+};
+---
+
+<SEO {...seoConfig} />

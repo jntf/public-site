@@ -1,0 +1,8 @@
+/* Nico Moji */
+@font-face {
+  font-family: 'Nico Moji';
+  src: url('/fonts/NicoMoji-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} 

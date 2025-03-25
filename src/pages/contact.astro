@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/ui/Icon.astro';
+import Breadcrumb from '../components/seo/Breadcrumb.astro';
+import Button from '../components/ui/Button.astro';
+import GreenButton from '../components/ui/Button.astro';
+
+// Données pour le fil d'Ariane
+const breadcrumbItems = [
+  { name: 'Accueil', url: '/' },
+  { name: 'Contact', url: '/contact', current: true },
+];
+
+// FAQ
+const faqs = [
+  {
+    question: "Comment devenir membre de NJI Auto Pro ?",
+    answer: "Pour devenir membre, vous devez être un professionnel du secteur automobile (concessionnaire, revendeur, mandataire, etc.). Remplissez notre formulaire de demande d'accès et notre équipe vous contactera sous 24 heures ouvrées pour finaliser votre inscription."
+  },
+  {
+    question: "Quels types de véhicules propose NJI Auto Pro ?",
+    answer: "Notre plateforme offre une large gamme de véhicules pour les professionnels : véhicules d'occasion récents, véhicules de direction, véhicules de sociétés, et flottes d'entreprise. Toutes les catégories sont disponibles : citadines, berlines, SUV, utilitaires, etc."
+  },
+  {
+    question: "Dans quels pays NJI Auto Pro est-il présent ?",
+    answer: "NJI Auto Pro opère actuellement dans 12 pays européens : France, Allemagne, Espagne, Italie, Belgique, Pays-Bas, Luxembourg, Suisse, Autriche, Portugal, Pologne et République Tchèque."
+  },
+  {
+    question: "Quels sont les délais de livraison des véhicules ?",
+    answer: "Les délais varient selon la localisation du véhicule et votre pays. En moyenne, comptez entre 3 et 10 jours ouvrés pour une livraison nationale, et 7 à 15 jours pour une livraison internationale."
+  },
+  {
+    question: "Proposez-vous des garanties sur les véhicules ?",
+    answer: "Oui, tous les véhicules bénéficient d'une garantie professionnelle de base de 3 mois. Des extensions de garantie sont disponibles en option, allant jusqu'à 24 mois."
+  }
+];
+---
+
+<BaseLayout
+  title="Contact | NJI Auto Pro - Plateforme B2B pour professionnels auto"
+  description="Contactez l'équipe NJI Auto Pro. Nous sommes à votre disposition pour répondre à vos questions et vous accompagner dans votre activité automobile B2B."
+>
+  <div class="container mx-auto px-4 py-8">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <!-- Contact Hero Section -->
+    <section class="py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          Contactez-nous
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Notre équipe est à votre disposition pour répondre à vos questions et vous accompagner dans votre activité automobile B2B.
+        </p>
+      </div>
+    </section>
+    
+    <!-- Contact Grid -->
+    <section class="py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <!-- Formulaire de contact -->
+        <div class="lg:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            Envoyez-nous un message
+          </h2>
+          
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="nom" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Nom complet*
+                </label>
+                <input 
+                  type="text" 
+                  id="nom" 
+                  name="nom" 
+                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
+                  required
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Email professionnel*
+                </label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
+                  required
+                />
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="telephone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Téléphone
+                </label>
+                <input 
+                  type="tel" 
+                  id="telephone" 
+                  name="telephone" 
+                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
+                />
+              </div>
+              <div>
+                <label for="entreprise" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Nom de l'entreprise*
+                </label>
+                <input 
+                  type="text" 
+                  id="entreprise" 
+                  name="entreprise" 
+                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
+                  required
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label for="sujet" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                Sujet*
+              </label>
+              <select 
+                id="sujet" 
+                name="sujet" 
+                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
+                required
+              >
+                <option value="">Sélectionnez un sujet</option>
+                <option value="inscription">Demande d'accès à la plateforme</option>
+                <option value="information">Informations générales</option>
+                <option value="partenariat">Proposition de partenariat</option>
+                <option value="assistance">Assistance technique</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                Message*
+              </label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="6" 
+                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
+                required
+              ></textarea>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="privacy"
+                  type="checkbox"
+                  class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                  required
+                />
+              </div>
+              <div class="ml-3 text-sm">
+                <label for="privacy" class="text-gray-600 dark:text-gray-400">
+                  J'accepte que mes données soient traitées conformément à la <a href="/politique-confidentialite" class="text-primary hover:underline">politique de confidentialité</a>*
+                </label>
+              </div>
+            </div>
+            
+            <div>
+              <GreenButton type="submit" size="lg" class="w-full sm:w-auto">
+                Envoyer le message
+              </GreenButton>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Informations de contact -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+              Coordonnées
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon name="lucide:mail" class="h-5 w-5 text-primary" />
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Email</p>
+                  <a href="mailto:contact@njiautopro.fr" class="text-primary hover:underline mt-1 block">
+                    contact@njiautopro.fr
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon name="lucide:phone" class="h-5 w-5 text-primary" />
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Téléphone</p>
+                  <a href="tel:+33123456789" class="text-gray-600 dark:text-gray-400 hover:text-primary mt-1 block">
+                    +33 1 23 45 67 89
+                  </a>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon name="lucide:map-pin" class="h-5 w-5 text-primary" />
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Adresse</p>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">
+                    123 Avenue de la République<br>
+                    75011 Paris<br>
+                    France
+                  </p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 mt-1">
+                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon name="lucide:clock" class="h-5 w-5 text-primary" />
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Horaires</p>
+                  <p class="text-gray-600 dark:text-gray-400 mt-1">
+                    Lundi - Vendredi : 9h00 - 18h00<br>
+                    Fermé les weekends et jours fériés
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 dark:bg-gray-800/30 rounded-xl p-6">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+              Suivez-nous
+            </h3>
+            <div class="flex space-x-4">
+              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                <Icon name="lucide:linkedin" class="h-5 w-5" />
+              </a>
+              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                <Icon name="lucide:facebook" class="h-5 w-5" />
+              </a>
+              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                <Icon name="lucide:twitter" class="h-5 w-5" />
+              </a>
+              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
+                <Icon name="lucide:instagram" class="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Carte -->
+    <section class="py-12">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 overflow-hidden">
+        <div class="aspect-[16/9] w-full bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+          <!-- Emplacement pour une iframe Google Maps ou une image statique -->
+          <div class="text-center p-8">
+            <Icon name="lucide:map" class="h-12 w-12 text-primary mx-auto mb-4" />
+            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Carte de localisation</h4>
+            <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              Cette section contiendrait normalement une carte interactive. Pour respecter les performances, elle a été remplacée par ce placeholder.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+          Questions fréquentes
+        </h2>
+        
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                {faq.question}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="py-12">
+      <div class="bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl p-8 md:p-12">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Vous n'avez pas trouvé la réponse à votre question ?
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+            Notre équipe dédiée est prête à vous aider. N'hésitez pas à nous contacter.
+          </p>
+          <div class="flex items-center justify-center gap-4">
+            <GreenButton size="lg">
+              <a href="tel:+33123456789">
+                <Icon name="lucide:phone" class="h-5 w-5 mr-2 inline-block" />
+                Nous appeler
+              </a>
+            </GreenButton>
+            <Button variant="outline" size="lg">
+              <a href="mailto:contact@njiautopro.fr">
+                <Icon name="lucide:mail" class="h-5 w-5 mr-2 inline-block" />
+                Envoyer un email
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

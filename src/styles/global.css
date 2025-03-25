@@ -1,0 +1,110 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  /* Couleurs primaires */
+  --color-primary-50: #82dab0;
+  --color-primary-100: #82dab0;
+  --color-primary-200: #69d3a0;
+  --color-primary-300: #50cb90;
+  --color-primary-400: #C5F1DD;
+  --color-primary-500: #9FE7C7;
+  --color-primary-600: #65D9A5;
+  --color-primary-700: #3ECF8E;
+  --color-primary-800: #38BC81;
+  --color-primary-900: #10633E;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Inter'];
+  }
+
+  .font-nicomoji {
+    font-family: 'Nico Moji', sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* Composants personnalisés */
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply bg-[var(--color-primary-700)] text-white hover:bg-[var(--color-primary-600)];
+  }
+  
+  .btn-outline {
+    @apply border border-gray-200 bg-white hover:bg-gray-100 hover:text-gray-900 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50;
+  }
+  
+  /* Styles Supabase */
+  .supabase-headline {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-gray-900 dark:text-white;
+  }
+  
+  .supabase-subheadline {
+    @apply text-2xl md:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-primary-700)];
+  }
+  
+  .supabase-paragraph {
+    @apply text-lg font-normal text-gray-600 dark:text-gray-300 leading-relaxed;
+  }
+  
+  .supabase-section-title {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white;
+  }
+}
+
+/* Animations et états */
+@layer utilities {
+  .transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)];
+  }
+
+  .logo-pulse {
+    animation: logo-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes logo-pulse {
+    0%, 100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+  }
+
+  .shadow-primary-glow {
+    box-shadow: 0 0 15px 5px rgba(62, 207, 142, 0.4);
+  }
+
+  .shadow-primary-glow-light {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.4);
+  }
+}

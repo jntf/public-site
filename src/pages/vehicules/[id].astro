@@ -1,0 +1,651 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/ui/Icon.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import SchemaVehicle from '../../components/seo/SchemaVehicle.astro';
+import Button from '../../components/ui/Button.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+// Importation des images locales
+import bmw1 from '../../assets/images/bmw1.jpg';
+import bmw2 from '../../assets/images/bmw2.jpg';
+import bmw3 from '../../assets/images/bmw3.jpg';
+import bmw4 from '../../assets/images/bmw4.jpg';
+import bmw5 from '../../assets/images/bmw5.jpg';
+
+// Nos images sont de type ImageMetadata, mais SchemaVehicle attend des strings
+// On crée un type pour nos véhicules dans ce contexte
+interface LocalVehicleDetails {
+  id: string;
+  brand: string;
+  model: string;
+  year: number;
+  mileage: number;
+  price: number;
+  fuel: string;
+  transmission: string;
+  power: number;
+  doors: number;
+  vin: string;
+  color: string;
+  condition: string;
+  bodyType: string;
+  engineCapacity: number;
+  enginePowerKW: number;
+  enginePowerHP: number;
+  seatingCapacity: number;
+  emissionClass: string;
+  description: string;
+  features: string[];
+  images: ImageMetadata[];
+  stockNumber: string;
+}
+
+// Simulez la récupération des données depuis une API
+export function getStaticPaths() {
+  // Dans une vraie mise en œuvre, vous récupéreriez ces données d'une API ou d'une base de données
+  const vehicles: LocalVehicleDetails[] = [
+    {
+      id: 'v1',
+      brand: 'BMW',
+      model: 'X5',
+      year: 2022,
+      mileage: 25000,
+      price: 58900,
+      fuel: 'Diesel',
+      transmission: 'Automatique',
+      power: 265,
+      doors: 5,
+      vin: 'WBAKJ2C51CCK12345',
+      color: 'Noir Saphir',
+      condition: 'Occasion',
+      bodyType: 'SUV',
+      engineCapacity: 3000,
+      enginePowerKW: 195,
+      enginePowerHP: 265,
+      seatingCapacity: 5,
+      emissionClass: 'Euro 6d',
+      description: 'Magnifique BMW X5 en parfait état avec carnet complet et options premium.',
+      features: [
+        'Toit panoramique',
+        'Sièges cuir',
+        'Navigation GPS',
+        'Caméra de recul',
+        'Jantes 20"',
+        'Hayon électrique',
+        'Aide au stationnement',
+        'Bluetooth',
+        'Climatisation bi-zone',
+        'Régulateur de vitesse adaptatif',
+        'Sièges chauffants',
+        'Système audio Harman Kardon'
+      ],
+      images: [
+        bmw1,
+        bmw2,
+        bmw3,
+        bmw4,
+        bmw5
+      ],
+      stockNumber: 'BM-X5-22-001'
+    },
+    {
+      id: 'v2',
+      brand: 'Mercedes',
+      model: 'Classe C',
+      year: 2021,
+      mileage: 35000,
+      price: 42500,
+      fuel: 'Essence',
+      transmission: 'Automatique',
+      power: 197,
+      doors: 4,
+      vin: 'WDD2050421R123456',
+      color: 'Gris Sélénite',
+      condition: 'Occasion',
+      bodyType: 'Berline',
+      engineCapacity: 2000,
+      enginePowerKW: 145,
+      enginePowerHP: 197,
+      seatingCapacity: 5,
+      emissionClass: 'Euro 6d',
+      description: 'Mercedes Classe C en excellent état, entretenue chez le concessionnaire officiel.',
+      features: [
+        'Sièges cuir',
+        'Navigation GPS',
+        'Caméra de recul',
+        'Jantes alliage',
+        'Toit ouvrant',
+        'Aide au stationnement',
+        'Bluetooth',
+        'Climatisation automatique',
+        'Régulateur de vitesse',
+        'Système audio Burmester',
+        'Sièges chauffants',
+        'Volant multifonction'
+      ],
+      images: [
+        bmw1, // Temporairement, utilisons les mêmes images
+        bmw2,
+        bmw3,
+        bmw4,
+        bmw5
+      ],
+      stockNumber: 'MB-C200-21-002'
+    },
+  ];
+  
+  return vehicles.map(vehicle => {
+    return {
+      params: { id: vehicle.id },
+      props: { vehicle }
+    };
+  });
+}
+
+const { vehicle } = Astro.props;
+
+// Données pour le fil d'Ariane
+const breadcrumbItems = [
+  { name: 'Accueil', url: '/' },
+  { name: 'Véhicules', url: '/vehicules' },
+  { name: `${vehicle.brand} ${vehicle.model}`, url: `/vehicules/${vehicle.id}`, current: true },
+];
+
+// URL pour le schema.org
+const vehicleUrl = `/vehicules/${vehicle.id}`;
+
+// Index de l'image actuellement sélectionnée
+const selectedImageIndex = 0;
+
+// Conversion des URLs d'images pour le schéma.org qui n'accepte que des strings
+const schemaVehicle = {
+  ...vehicle,
+  // Convertir les ImageMetadata en string pour Schema.org
+  images: vehicle.images.map((img, index) => `/assets/images/bmw${index + 1}.jpg`) 
+};
+---
+
+<BaseLayout
+  title={`${vehicle.brand} ${vehicle.model} ${vehicle.year} - ${vehicle.mileage.toLocaleString()} km`}
+  description={`${vehicle.description.substring(0, 160)}...`}
+  image={`/assets/images/bmw1.jpg`}
+>
+  <!-- Schema.org pour le véhicule -->
+  <SchemaVehicle 
+    vehicle={schemaVehicle} 
+    url={vehicleUrl}
+    businessName="NJI Auto Pro"
+    businessLogo="https://example.com/logo.png"
+  />
+  
+  <!-- Section principale -->
+  <section class="relative py-8 overflow-hidden">
+    <!-- Fond dégradé subtil -->
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 z-0"></div>
+    
+    <!-- Motif de fond subtil -->
+    <div class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+         style="background-image: radial-gradient(var(--color-primary-700) 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <Breadcrumb items={breadcrumbItems} />
+      
+      <!-- Structure principale à deux colonnes (inversées) -->
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Colonne de droite avec galerie (maintenant à gauche dans l'ordre) -->
+        <div class="lg:col-span-8 order-1">
+          <!-- Galerie photos -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden mb-6">
+            <div class="relative aspect-[16/9] overflow-hidden">
+              <Image 
+                src={vehicle.images[selectedImageIndex]}
+                width={1200}
+                height={675}
+                format="avif"
+                quality={85}
+                alt={`${vehicle.brand} ${vehicle.model} - Vue principale`}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="grid grid-cols-5 gap-2 p-2">
+              {vehicle.images.slice(0, 5).map((image, index) => (
+                <div class={`rounded-md overflow-hidden cursor-pointer border-2 ${index === selectedImageIndex ? 'border-[var(--color-primary-700)]' : 'border-transparent'} hover:border-[var(--color-primary-700)] transition-all duration-200`}>
+                  <Image 
+                    src={image}
+                    width={240}
+                    height={135}
+                    format="avif"
+                    quality={70}
+                    alt={`${vehicle.brand} ${vehicle.model} - Vue ${index + 1}`}
+                    class="w-full h-16 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Onglets d'information -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+            <!-- En-têtes des onglets -->
+            <div class="flex border-b border-gray-100 dark:border-gray-700">
+              <button id="tab-specs" class="flex-1 py-3 px-3 text-center text-xs tracking-wider uppercase font-medium border-b-2 border-[var(--color-primary-700)] text-[var(--color-primary-700)]">
+                Caractéristiques
+              </button>
+              <button id="tab-equipment" class="flex-1 py-3 px-3 text-center text-xs tracking-wider uppercase font-medium border-b-2 border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                Équipements
+              </button>
+              <button id="tab-warranty" class="flex-1 py-3 px-3 text-center text-xs tracking-wider uppercase font-medium border-b-2 border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                Garantie
+              </button>
+            </div>
+            
+            <!-- Contenu des onglets -->
+            <div class="p-6">
+              <!-- Onglet Caractéristiques (visible par défaut) -->
+              <div id="content-specs" class="tab-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8">
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Marque</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.brand}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Modèle</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.model}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Année</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.year}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Kilométrage</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.mileage.toLocaleString()} km</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Carburant</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.fuel}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Transmission</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.transmission}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Puissance</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.enginePowerHP} ch / {vehicle.enginePowerKW} kW</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Cylindrée</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.engineCapacity} cm³</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Nombre de portes</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.doors}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Couleur</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.color}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Carrosserie</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.bodyType}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Places</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.seatingCapacity}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Norme émission</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.emissionClass}</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-gray-100 dark:border-gray-700">
+                    <span class="text-xs text-gray-600 dark:text-gray-400">Stock #</span>
+                    <span class="text-xs font-medium text-gray-900 dark:text-white">{vehicle.stockNumber}</span>
+                  </div>
+                </div>
+                
+                <div class="mt-6">
+                  <h3 class="text-sm font-medium text-gray-900 dark:text-white mb-3">Description</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {vehicle.description}
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Onglet Équipements (caché par défaut) -->
+              <div id="content-equipment" class="tab-content hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {vehicle.features.map(feature => (
+                    <div class="flex items-center p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors">
+                      <Icon name="lucide:check-circle" class="h-5 w-5 text-[var(--color-primary-700)] mr-2 flex-shrink-0" />
+                      <span class="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <!-- Onglet Garantie (caché par défaut) -->
+              <div id="content-warranty" class="tab-content hidden">
+                <div class="flex items-center mb-4">
+                  <div class="w-10 h-10 rounded-full bg-[var(--color-primary-700)]/10 flex items-center justify-center mr-3">
+                    <Icon name="lucide:shield" class="h-5 w-5 text-[var(--color-primary-700)]" />
+                  </div>
+                  <div>
+                    <h3 class="font-medium text-gray-900 dark:text-white">Garantie professionnelle 12 mois</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Pièces et main d'œuvre</p>
+                  </div>
+                </div>
+                
+                <div class="bg-[var(--color-primary-700)]/5 rounded-lg p-4 mb-4">
+                  <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                    Ce véhicule bénéficie d'une garantie professionnelle complète de 12 mois, pièces et main d'œuvre, valable dans tout notre réseau de partenaires en Europe. Cette garantie couvre les défauts mécaniques, électriques et électroniques.
+                  </p>
+                </div>
+                
+                <div class="border-t border-gray-100 dark:border-gray-700 pt-4">
+                  <h4 class="font-medium text-gray-900 dark:text-white mb-2">Ce qui est couvert :</h4>
+                  <ul class="space-y-1">
+                    <li class="flex items-start">
+                      <Icon name="lucide:check" class="h-5 w-5 text-[var(--color-primary-700)] mr-2 mt-0.5" />
+                      <span class="text-sm text-gray-600 dark:text-gray-400">Moteur et transmission</span>
+                    </li>
+                    <li class="flex items-start">
+                      <Icon name="lucide:check" class="h-5 w-5 text-[var(--color-primary-700)] mr-2 mt-0.5" />
+                      <span class="text-sm text-gray-600 dark:text-gray-400">Systèmes électriques et électroniques</span>
+                    </li>
+                    <li class="flex items-start">
+                      <Icon name="lucide:check" class="h-5 w-5 text-[var(--color-primary-700)] mr-2 mt-0.5" />
+                      <span class="text-sm text-gray-600 dark:text-gray-400">Assistance routière 24/7</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Véhicules similaires -->
+          <div class="mt-8">
+            <h2 class="text-xl font-medium text-gray-900 dark:text-white mb-6">
+              Véhicules similaires
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <a href="/vehicules/v2" class="group">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-md hover:border-[var(--color-primary-700)]/30">
+                  <div class="relative">
+                    <Image 
+                      src={bmw2}
+                      width={400}
+                      height={300}
+                      format="avif" 
+                      quality={80}
+                      alt="Mercedes Classe C"
+                      class="w-full h-40 object-cover"
+                    />
+                    <div class="absolute top-0 right-0 m-2">
+                      <span class="bg-[var(--color-primary-700)] text-white text-xs font-medium px-2 py-1 rounded">
+                        Recommandé
+                      </span>
+                    </div>
+                  </div>
+                  <div class="p-4">
+                    <h3 class="font-medium text-gray-900 dark:text-white mb-1">Mercedes Classe C</h3>
+                    <div class="flex justify-between items-center mb-2">
+                      <p class="text-gray-600 dark:text-gray-400 text-sm">2021 • 35 000 km</p>
+                      <p class="text-[var(--color-primary-700)] font-semibold">42 500 €</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Colonne de gauche (sticky) avec informations principales (maintenant à droite dans l'ordre) -->
+        <div class="lg:col-span-4 order-2">
+          <div class="sticky top-4 md:top-8 lg:top-24 max-h-screen overflow-y-auto pb-6">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+              <div class="p-6">
+                <!-- Badge de condition -->
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-4">
+                  <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+                  {vehicle.condition}
+                </div>
+                
+                <!-- Titre et prix -->
+                <h1 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2 tracking-tight">
+                  {vehicle.brand} {vehicle.model}
+                </h1>
+                
+                <div class="flex items-center justify-between mt-4 mb-6">
+                  <p class="text-3xl font-bold text-[var(--color-primary-700)]">
+                    {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(vehicle.price)}
+                  </p>
+                </div>
+                
+                <!-- Caractéristiques principales -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="lucide:calendar" class="h-4 w-4 text-[var(--color-primary-700)]" />
+                    <span>{vehicle.year}</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="lucide:gauge" class="h-4 w-4 text-[var(--color-primary-700)]" />
+                    <span>{vehicle.mileage.toLocaleString()} km</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="lucide:fuel" class="h-4 w-4 text-[var(--color-primary-700)]" />
+                    <span>{vehicle.fuel}</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                    <Icon name="lucide:settings" class="h-4 w-4 text-[var(--color-primary-700)]" />
+                    <span>{vehicle.transmission}</span>
+                  </div>
+                </div>
+                
+                <!-- Points forts -->
+                <div class="mb-6">
+                  <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">Points forts</h3>
+                  <div class="flex flex-wrap gap-2">
+                    {vehicle.features.slice(0, 3).map(feature => (
+                      <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs rounded-full px-3 py-1">
+                        {feature}
+                      </span>
+                    ))}
+                    <span class="bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-xs rounded-full px-3 py-1">
+                      + {vehicle.features.length - 3} options
+                    </span>
+                  </div>
+                </div>
+                
+                <!-- Boutons d'action -->
+                <div class="space-y-3">
+                  <Button 
+                    variant="green" 
+                    class="w-full py-3 font-medium shadow-lg shadow-[var(--color-primary-700)]/20 hover:shadow-[var(--color-primary-700)]/30 transition-all duration-300"
+                  >
+                    Demander un accès
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    class="w-full py-3 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  >
+                    <Icon name="lucide:phone" class="h-4 w-4 mr-2" />
+                    Nous contacter
+                  </Button>
+                </div>
+                
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+                  Réservé aux professionnels de l'automobile
+                </p>
+              </div>
+              
+              <!-- Partager -->
+              <div class="border-t border-gray-100 dark:border-gray-700 p-4">
+                <div class="flex justify-between items-center">
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Partager ce véhicule</p>
+                  <div class="flex space-x-2">
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      class="h-8 w-8 rounded-full border-gray-200 dark:border-gray-700"
+                    >
+                      <Icon name="lucide:mail" class="h-4 w-4" />
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="icon" 
+                      class="h-8 w-8 rounded-full border-gray-200 dark:border-gray-700"
+                    >
+                      <Icon name="lucide:share" class="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Information vendeur (sous la carte principale) -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden mt-6 p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-[var(--color-primary-700)]/10 flex items-center justify-center mr-3">
+                  <Icon name="lucide:building" class="h-5 w-5 text-[var(--color-primary-700)]" />
+                </div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white">NJI Auto Pro</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Professionnel automobile</p>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-center text-gray-600 dark:text-gray-400">
+                  <Icon name="lucide:map-pin" class="h-4 w-4 mr-2 text-[var(--color-primary-700)]" />
+                  <span>Paris, France</span>
+                </div>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                  Ce véhicule bénéficie d'une garantie professionnelle de 12 mois
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  // Gestion des onglets
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = ['specs', 'equipment', 'warranty'];
+    
+    tabs.forEach(tab => {
+      const tabBtn = document.getElementById(`tab-${tab}`);
+      const tabContent = document.getElementById(`content-${tab}`);
+      
+      if (tabBtn && tabContent) {
+        tabBtn.addEventListener('click', () => {
+          // Masquer tous les contenus d'onglets
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.add('hidden');
+          });
+          
+          // Réinitialiser tous les boutons d'onglets
+          tabs.forEach(t => {
+            const btn = document.getElementById(`tab-${t}`);
+            if (btn) {
+              btn.classList.remove('border-[var(--color-primary-700)]', 'text-[var(--color-primary-700)]');
+              btn.classList.add('border-transparent', 'text-gray-600', 'dark:text-gray-400');
+            }
+          });
+          
+          // Afficher le contenu de l'onglet sélectionné
+          tabContent.classList.remove('hidden');
+          
+          // Mettre en surbrillance le bouton d'onglet sélectionné
+          tabBtn.classList.remove('border-transparent', 'text-gray-600', 'dark:text-gray-400');
+          tabBtn.classList.add('border-[var(--color-primary-700)]', 'text-[var(--color-primary-700)]');
+        });
+      }
+    });
+  });
+
+  // Script pour améliorer l'élément sticky
+  window.addEventListener('DOMContentLoaded', function() {
+    // Ajuster la hauteur maximale de l'élément sticky et ses animations
+    function handleSticky() {
+      const sticky = document.querySelector('.sticky');
+      if (!sticky) return;
+      
+      // Ajuster la hauteur max en fonction de la fenêtre
+      const windowHeight = window.innerHeight;
+      const offset = 20; // marge en bas
+      sticky.style.maxHeight = (windowHeight - offset) + 'px';
+      
+      // Ajouter les classes pour le suivi du scroll
+      let lastScrollY = window.scrollY;
+      window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > lastScrollY) {
+          sticky.classList.add('scrolling-down');
+          sticky.classList.remove('scrolling-up');
+        } else {
+          sticky.classList.add('scrolling-up');
+          sticky.classList.remove('scrolling-down');
+        }
+        
+        lastScrollY = currentScrollY;
+      });
+    }
+    
+    // Initialiser et mettre à jour lors du redimensionnement
+    handleSticky();
+    window.addEventListener('resize', handleSticky);
+  });
+</script>
+
+<style>
+  /* Variations de couleurs et de styles pour les éléments */
+  :root {
+    --color-primary-700-rgb: 109, 216, 164; /* Valeur RGB de la couleur primaire */
+  }
+  
+  .tab-content {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Styles pour l'élément sticky */
+  .sticky {
+    transition: transform 0.2s ease-out;
+    scrollbar-width: thin;
+  }
+  
+  .sticky::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .sticky::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-primary-700-rgb), 0.5);
+    border-radius: 4px;
+  }
+  
+  .sticky.scrolling-down {
+    transform: translateY(0);
+  }
+  
+  .sticky.scrolling-up {
+    transform: translateY(0);
+  }
+  
+  /* Assure une transition fluide lors du changement de position */
+  @media (max-width: 1023px) {
+    .sticky {
+      margin-top: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+/**
+ * Composant pour générer un schéma JSON-LD pour les véhicules 
+ * selon les spécifications de Schema.org
+ */
+
+interface VehicleDetails {
+  id: string;
+  brand: string;
+  model: string;
+  year: number;
+  mileage: number;
+  price: number;
+  fuel: string;
+  power?: number;
+  doors?: number;
+  transmission?: string;
+  vin?: string;
+  images?: string[];
+  description?: string;
+  stockNumber?: string;
+  bodyType?: string;
+  color?: string;
+  condition?: string;
+  driveWheelConfiguration?: string;
+  engineCapacity?: number;
+  enginePowerKW?: number;
+  enginePowerHP?: number;
+  engineType?: string;
+  seatingCapacity?: number;
+  weight?: number;
+  emissionClass?: string;
+}
+
+interface Props {
+  vehicle: VehicleDetails;
+  url: string;
+  businessName?: string;
+  businessLogo?: string;
+}
+
+const { 
+  vehicle, 
+  url, 
+  businessName = "NJI Auto Pro",
+  businessLogo = "https://example.com/logo.png" 
+} = Astro.props;
+
+// Construction du schéma JSON-LD pour le véhicule
+const vehicleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Vehicle",
+  "@id": vehicle.id,
+  "name": `${vehicle.brand} ${vehicle.model}`,
+  "brand": {
+    "@type": "Brand",
+    "name": vehicle.brand
+  },
+  "model": vehicle.model,
+  "modelDate": vehicle.year,
+  "mileageFromOdometer": {
+    "@type": "QuantitativeValue",
+    "value": vehicle.mileage,
+    "unitCode": "KMT"
+  },
+  "vehicleIdentificationNumber": vehicle.vin || undefined,
+  "url": url,
+  "offers": {
+    "@type": "Offer",
+    "price": vehicle.price,
+    "priceCurrency": "EUR",
+    "businessFunction": "https://purl.org/goodrelations/v1#Sell",
+    "seller": {
+      "@type": "Organization",
+      "name": businessName,
+      "logo": businessLogo
+    }
+  }
+};
+
+// Ajouter les propriétés conditionnelles
+if (vehicle.power) {
+  vehicleSchema.vehicleEngine = {
+    "@type": "EngineSpecification",
+    "enginePower": {
+      "@type": "QuantitativeValue",
+      "value": vehicle.power,
+      "unitCode": "KWT"
+    }
+  };
+}
+
+if (vehicle.doors) {
+  vehicleSchema.numberOfDoors = vehicle.doors;
+}
+
+if (vehicle.transmission) {
+  vehicleSchema.vehicleTransmission = vehicle.transmission;
+}
+
+if (vehicle.fuel) {
+  vehicleSchema.fuelType = vehicle.fuel;
+}
+
+if (vehicle.bodyType) {
+  vehicleSchema.bodyType = vehicle.bodyType;
+}
+
+if (vehicle.color) {
+  vehicleSchema.color = vehicle.color;
+}
+
+if (vehicle.condition) {
+  vehicleSchema.itemCondition = vehicle.condition;
+}
+
+if (vehicle.driveWheelConfiguration) {
+  vehicleSchema.driveWheelConfiguration = vehicle.driveWheelConfiguration;
+}
+
+if (vehicle.engineCapacity) {
+  if (!vehicleSchema.vehicleEngine) {
+    vehicleSchema.vehicleEngine = {
+      "@type": "EngineSpecification"
+    };
+  }
+  vehicleSchema.vehicleEngine.engineDisplacement = {
+    "@type": "QuantitativeValue",
+    "value": vehicle.engineCapacity,
+    "unitCode": "CMQ"
+  };
+}
+
+if (vehicle.enginePowerKW) {
+  if (!vehicleSchema.vehicleEngine) {
+    vehicleSchema.vehicleEngine = {
+      "@type": "EngineSpecification"
+    };
+  }
+  vehicleSchema.vehicleEngine.enginePower = {
+    "@type": "QuantitativeValue",
+    "value": vehicle.enginePowerKW,
+    "unitCode": "KWT"
+  };
+}
+
+if (vehicle.seatingCapacity) {
+  vehicleSchema.seatingCapacity = vehicle.seatingCapacity;
+}
+
+if (vehicle.weight) {
+  vehicleSchema.weight = {
+    "@type": "QuantitativeValue",
+    "value": vehicle.weight,
+    "unitCode": "KGM"
+  };
+}
+
+if (vehicle.emissionClass) {
+  vehicleSchema.emissionsCO2 = vehicle.emissionClass;
+}
+
+if (vehicle.images && vehicle.images.length > 0) {
+  vehicleSchema.image = vehicle.images;
+}
+
+if (vehicle.description) {
+  vehicleSchema.description = vehicle.description;
+}
+
+if (vehicle.stockNumber) {
+  vehicleSchema.sku = vehicle.stockNumber;
+}
+
+const schemaString = JSON.stringify(vehicleSchema);
+---
+
+<script type="application/ld+json" set:html={schemaString}></script>

@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/ui/Icon.astro';
+import Breadcrumb from '../../components/seo/Breadcrumb.astro';
+import Button from '../../components/ui/Button.astro';
+import GreenButton from '../../components/ui/Button.astro';
+
+// Exemple de données de véhicules pour la démo
+const vehicles = [
+  {
+    id: 'v1',
+    brand: 'BMW',
+    model: 'X5',
+    year: 2022,
+    mileage: 25000,
+    price: 58900,
+    fuel: 'Diesel',
+    image: 'https://via.placeholder.com/400x300',
+  },
+  {
+    id: 'v2',
+    brand: 'Mercedes',
+    model: 'Classe C',
+    year: 2021,
+    mileage: 35000,
+    price: 42500,
+    fuel: 'Essence',
+    image: 'https://via.placeholder.com/400x300',
+  },
+  {
+    id: 'v3',
+    brand: 'Audi',
+    model: 'Q5',
+    year: 2023,
+    mileage: 15000,
+    price: 62000,
+    fuel: 'Hybride',
+    image: 'https://via.placeholder.com/400x300',
+  },
+  {
+    id: 'v4',
+    brand: 'Volkswagen',
+    model: 'Golf',
+    year: 2020,
+    mileage: 45000,
+    price: 23900,
+    fuel: 'Essence',
+    image: 'https://via.placeholder.com/400x300',
+  },
+  {
+    id: 'v5',
+    brand: 'Toyota',
+    model: 'RAV4',
+    year: 2022,
+    mileage: 28000,
+    price: 36800,
+    fuel: 'Hybride',
+    image: 'https://via.placeholder.com/400x300',
+  },
+  {
+    id: 'v6',
+    brand: 'Renault',
+    model: 'Megane',
+    year: 2021,
+    mileage: 32000,
+    price: 19500,
+    fuel: 'Diesel',
+    image: 'https://via.placeholder.com/400x300',
+  },
+];
+
+// Données pour le fil d'Ariane
+const breadcrumbItems = [
+  { name: 'Accueil', url: '/' },
+  { name: 'Véhicules', url: '/vehicules', current: true },
+];
+---
+
+<BaseLayout
+  title="Catalogue de Véhicules Professionnels | NJI Auto Pro"
+  description="Découvrez notre sélection de véhicules disponibles pour les professionnels de l'automobile. Parcourez notre catalogue et trouvez les meilleures opportunités."
+>
+  <div class="container mx-auto px-4 py-8">
+    <Breadcrumb items={breadcrumbItems} />
+    
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar avec filtres -->
+      <div class="w-full lg:w-64 space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-700">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Filtres</h2>
+          
+          <!-- Marque -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Marque
+            </label>
+            <select class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm">
+              <option value="">Toutes les marques</option>
+              <option value="audi">Audi</option>
+              <option value="bmw">BMW</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="volkswagen">Volkswagen</option>
+              <option value="toyota">Toyota</option>
+            </select>
+          </div>
+          
+          <!-- Type de carburant -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Carburant
+            </label>
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Essence</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Diesel</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Hybride</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" />
+                <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">Électrique</span>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Prix -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Prix (€)
+            </label>
+            <div class="flex gap-2">
+              <input type="number" placeholder="Min" class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm" />
+              <input type="number" placeholder="Max" class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm" />
+            </div>
+          </div>
+          
+          <!-- Année -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Année
+            </label>
+            <div class="flex gap-2">
+              <select class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm">
+                <option value="">Min</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+              <select class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm">
+                <option value="">Max</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+              </select>
+            </div>
+          </div>
+          
+          <!-- Kilométrage -->
+          <div class="mb-5">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Kilométrage
+            </label>
+            <div class="flex gap-2">
+              <input type="number" placeholder="Min" class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm" />
+              <input type="number" placeholder="Max" class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm" />
+            </div>
+          </div>
+          
+          <!-- Boutons d'action -->
+          <div class="space-y-2">
+            <GreenButton class="w-full">
+              Appliquer les filtres
+            </GreenButton>
+            <Button variant="outline" class="w-full">
+              Réinitialiser
+            </Button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contenu principal -->
+      <div class="flex-1">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 border border-gray-100 dark:border-gray-700 mb-6">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+              Catalogue de véhicules
+            </h1>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-500 dark:text-gray-400">Trier par:</span>
+              <select class="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-3 py-2 text-sm">
+                <option value="recent">Plus récent</option>
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="mileage">Kilométrage</option>
+                <option value="year">Année</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Grille de véhicules -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {vehicles.map(vehicle => (
+            <a href={`/vehicules/${vehicle.id}`} class="group">
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-md">
+                <div class="relative">
+                  <img 
+                    src={vehicle.image} 
+                    alt={`${vehicle.brand} ${vehicle.model}`}
+                    class="w-full h-48 object-cover"
+                  />
+                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <div class="text-white font-semibold text-lg">{vehicle.brand} {vehicle.model}</div>
+                  </div>
+                </div>
+                <div class="p-4 space-y-4">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <div class="text-gray-600 dark:text-gray-400 text-sm">
+                        {vehicle.year} • {vehicle.fuel}
+                      </div>
+                    </div>
+                    <div class="text-primary font-semibold">
+                      {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(vehicle.price)}
+                    </div>
+                  </div>
+                  <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                    <Icon name="lucide:gauge" class="h-4 w-4 mr-1" />
+                    <span>
+                      {new Intl.NumberFormat('fr-FR', { style: 'decimal' }).format(vehicle.mileage)} km
+                    </span>
+                  </div>
+                  <GreenButton class="w-full group-hover:bg-primary">
+                    Voir le détail
+                  </GreenButton>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+        
+        <!-- Pagination -->
+        <div class="mt-10 flex justify-center">
+          <nav class="flex items-center space-x-2" aria-label="Pagination">
+            <Button variant="outline" size="icon" class="hidden sm:flex">
+              <span class="sr-only">Page précédente</span>
+              <Icon name="lucide:chevron-left" class="h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="sm" class="bg-primary/10 text-primary border-primary/30">
+              1
+            </Button>
+            <Button variant="outline" size="sm">
+              2
+            </Button>
+            <Button variant="outline" size="sm">
+              3
+            </Button>
+            <span class="text-gray-500">...</span>
+            <Button variant="outline" size="sm">
+              8
+            </Button>
+            <Button variant="outline" size="icon" class="hidden sm:flex">
+              <span class="sr-only">Page suivante</span>
+              <Icon name="lucide:chevron-right" class="h-4 w-4" />
+            </Button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Styles spécifiques à la page de véhicules */
+  .group:hover .group-hover\:bg-primary {
+    background-color: #5bc190;
+  }
+</style>
