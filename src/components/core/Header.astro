@@ -64,12 +64,6 @@ const aboutMenuItems = [
     icon: "lucide:users",
   },
   {
-    id: "partenaires",
-    name: "Nos partenaires",
-    description: "Les marques qui nous font confiance",
-    icon: "lucide:handshake",
-  },
-  {
     id: "contact",
     name: "Nous rejoindre",
     description: "Devenez membre de notre réseau",
@@ -150,18 +144,6 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
       </div>
 
       <a
-        href="/vehicules"
-        class:list={[
-          "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
-          {
-            "text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)] font-semibold":
-              Astro.url.pathname.startsWith("/vehicules"),
-          },
-        ]}
-      >
-        Véhicules
-      </a>
-      <a
         href="/services"
         class:list={[
           "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
@@ -228,6 +210,18 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
           </div>
         </div>
       </div>
+      <a
+        href="/vehicules"
+        class:list={[
+          "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
+          {
+            "text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)] font-semibold":
+              Astro.url.pathname.startsWith("/vehicules"),
+          },
+        ]}
+      >
+        Véhicules
+      </a>
       <a
         href="/contact"
         class:list={[
@@ -337,30 +331,6 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
         </div>
       </div>
 
-      <a
-        href="/vehicules"
-        class:list={[
-          "py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800",
-          {
-            "bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)]":
-              Astro.url.pathname.startsWith("/vehicules"),
-          },
-        ]}
-      >
-        Véhicules
-      </a>
-      <a
-        href="/services"
-        class:list={[
-          "py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800",
-          {
-            "bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)]":
-              Astro.url.pathname.startsWith("/services"),
-          },
-        ]}
-      >
-        Services
-      </a>
       <!-- À propos avec sections dépliables sur mobile -->
       <div class="mobile-section-menu">
         <div
@@ -411,6 +381,32 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
           </div>
         </div>
       </div>
+
+      <a
+        href="/vehicules"
+        class:list={[
+          "py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800",
+          {
+            "bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)]":
+              Astro.url.pathname.startsWith("/vehicules"),
+          },
+        ]}
+      >
+        Véhicules
+      </a>
+      <a
+        href="/services"
+        class:list={[
+          "py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800",
+          {
+            "bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)]":
+              Astro.url.pathname.startsWith("/services"),
+          },
+        ]}
+      >
+        Services
+      </a>
+      
       <a
         href="/contact"
         class:list={[

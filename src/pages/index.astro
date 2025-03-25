@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/ui/Button.astro";
 import Icon from "../components/ui/Icon.astro";
+import { Image } from 'astro:assets';
+import linearFleet from '../assets/images/linear-fleet.jpeg';
+import linearFleetDark from '../assets/images/linear-fleet-dark.jpeg';
 ---
 
 <BaseLayout
@@ -28,6 +31,30 @@ import Icon from "../components/ui/Icon.astro";
       </div>
     </div>
 
+    <!-- Fleet Background Image -->
+    <div class="absolute inset-0 z-0 opacity-20">
+      <!-- Image en mode clair -->
+      <div class="w-full h-full absolute inset-0 block dark:hidden">
+        <Image
+          src={linearFleet}
+          alt="Flotte de véhicules - vue aérienne"
+          class="w-full h-full object-cover"
+          quality={80}
+          format="avif"
+        />
+      </div>
+      <!-- Image en mode sombre -->
+      <div class="w-full h-full absolute inset-0 hidden dark:block">
+        <Image
+          src={linearFleetDark}
+          alt="Flotte de véhicules - vue aérienne"
+          class="w-full h-full object-cover"
+          quality={80}
+          format="avif"
+        />
+      </div>
+    </div>
+
     <!-- Subtle Grid Pattern -->
     <div
       class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
@@ -37,12 +64,12 @@ import Icon from "../components/ui/Icon.astro";
 
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
           <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
           Plateforme B2B automobile
         </div>
         
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white tracking-tight mb-6 leading-[1.1]">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 dark:text-white tracking-tight mb-6 leading-[1.1]">
           Développez votre activité<br />
           <span class="text-3xl md:text-4xl lg:text-5xl font-light text-[var(--color-primary-700)]">à l'échelle professionnelle</span>
         </h1>
@@ -57,7 +84,7 @@ import Icon from "../components/ui/Icon.astro";
             variant="green"
             size="lg"
             href="/auth/register"
-            class="px-8 py-4 rounded-md shadow-lg shadow-[var(--color-primary-700)]/20 hover:shadow-[var(--color-primary-700)]/30 transition-all duration-300"
+            class="px-8 py-4 rounded-md shadow-[var(--color-primary-700)]/20 hover:shadow-[var(--color-primary-700)]/30 transition-all duration-300"
           >
             Commencer un projet
             <svg
@@ -84,10 +111,10 @@ import Icon from "../components/ui/Icon.astro";
           </Button>
         </div>
         
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 font-light">
           NJI Auto Pro est une plateforme dédiée aux professionnels de l'automobile.
         </p>
-        <p class="text-base text-gray-700 dark:text-gray-300 font-medium mb-12">
+        <p class="text-base text-gray-700 dark:text-gray-300 font-light mb-12">
           Démarrez votre projet avec une base de données Postgres, authentification,<br class="hidden md:block" /> 
           APIs instantanées, et une gestion de parc complète.
         </p>
@@ -145,44 +172,47 @@ import Icon from "../components/ui/Icon.astro";
     class="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800"
   >
     <div class="container mx-auto px-4">
-      <p
-        class="text-center text-gray-500 dark:text-gray-400 mb-10 text-sm font-medium tracking-wider uppercase"
-      >
-        Plateforme de confiance pour les leaders de l'industrie automobile
-      </p>
-      <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 items-center">
-        <!-- Logos de partenaires en version simplifiée avec du texte -->
-        <div
-          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="font-medium text-lg md:text-xl tracking-tight">BMW</div>
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+          Nos collaborations
         </div>
-        <div
-          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="font-medium text-lg md:text-xl tracking-tight">
+        <h2 class="text-3xl font-light text-gray-900 dark:text-white mb-4">
+          Nos partenaires
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-light">
+          Nous collaborons avec les meilleurs acteurs du secteur pour vous garantir un service de qualité.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-6xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+          <div class="font-light text-lg md:text-xl tracking-tight text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            BMW
+          </div>
+        </div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+          <div class="font-light text-lg md:text-xl tracking-tight text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300">
             MERCEDES
           </div>
         </div>
-        <div
-          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="font-medium text-lg md:text-xl tracking-tight">AUDI</div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+          <div class="font-light text-lg md:text-xl tracking-tight text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            AUDI
+          </div>
         </div>
-        <div
-          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="font-medium text-lg md:text-xl tracking-tight">RENAULT</div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+          <div class="font-light text-lg md:text-xl tracking-tight text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            RENAULT
+          </div>
         </div>
-        <div
-          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="font-medium text-lg md:text-xl tracking-tight">TOYOTA</div>
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+          <div class="font-light text-lg md:text-xl tracking-tight text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300">
+            TOYOTA
+          </div>
         </div>
-        <div
-          class="text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="font-medium text-lg md:text-xl tracking-tight">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-sm transition-all duration-300">
+          <div class="font-light text-lg md:text-xl tracking-tight text-gray-400 dark:text-gray-500 opacity-60 hover:opacity-100 transition-opacity duration-300">
             VOLKSWAGEN
           </div>
         </div>
@@ -211,7 +241,7 @@ import Icon from "../components/ui/Icon.astro";
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <div
-          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6"
+          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6"
         >
           <span
             class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"
@@ -219,7 +249,7 @@ import Icon from "../components/ui/Icon.astro";
           Tout-en-un
         </div>
         <h2
-          class="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white mb-6 tracking-tight"
+          class="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 dark:text-white mb-6 tracking-tight"
         >
           Une solution complète pour les professionnels
         </h2>
@@ -257,7 +287,7 @@ import Icon from "../components/ui/Icon.astro";
               <circle cx="17" cy="17" r="2"></circle>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">
             Gestion de parc
           </h3>
           <p class="text-gray-600 dark:text-gray-400">
@@ -289,7 +319,7 @@ import Icon from "../components/ui/Icon.astro";
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">
             Analyse de marché
           </h3>
           <p class="text-gray-600 dark:text-gray-400">
@@ -323,7 +353,7 @@ import Icon from "../components/ui/Icon.astro";
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">
             CRM spécialisé
           </h3>
           <p class="text-gray-600 dark:text-gray-400">
@@ -349,7 +379,7 @@ import Icon from "../components/ui/Icon.astro";
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-16">
         <div
-          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6"
+          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6"
         >
           <span
             class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"
@@ -357,7 +387,7 @@ import Icon from "../components/ui/Icon.astro";
           Processus simple
         </div>
         <h2
-          class="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white mb-6"
+          class="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 dark:text-white mb-6"
         >
           Comment ça marche
         </h2>
@@ -382,7 +412,7 @@ import Icon from "../components/ui/Icon.astro";
             >
               1
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-2">
               Inscription
             </h3>
             <p class="text-gray-600 dark:text-gray-400">
@@ -397,7 +427,7 @@ import Icon from "../components/ui/Icon.astro";
             >
               2
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-2">
               Configuration
             </h3>
             <p class="text-gray-600 dark:text-gray-400">
@@ -412,7 +442,7 @@ import Icon from "../components/ui/Icon.astro";
             >
               3
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-2">
               Utilisation
             </h3>
             <p class="text-gray-600 dark:text-gray-400">
@@ -427,7 +457,7 @@ import Icon from "../components/ui/Icon.astro";
             >
               4
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-2">
               Croissance
             </h3>
             <p class="text-gray-600 dark:text-gray-400">
@@ -461,7 +491,7 @@ import Icon from "../components/ui/Icon.astro";
         class="max-w-4xl mx-auto bg-white dark:bg-gray-900 p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 text-center"
       >
         <div
-          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium mb-6"
+          class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6"
         >
           <span
             class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"
@@ -469,7 +499,7 @@ import Icon from "../components/ui/Icon.astro";
           Démarrez maintenant
         </div>
         <h2
-          class="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-6"
+          class="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-6"
         >
           Prêt à optimiser votre activité automobile?
         </h2>

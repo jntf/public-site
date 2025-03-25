@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/ui/Icon.astro';
 import Breadcrumb from '../components/seo/Breadcrumb.astro';
 import Button from '../components/ui/Button.astro';
-import GreenButton from '../components/ui/Button.astro';
 
 // Données pour le fil d'Ariane
 const breadcrumbItems = [
@@ -34,6 +33,34 @@ const faqs = [
     answer: "Oui, tous les véhicules bénéficient d'une garantie professionnelle de base de 3 mois. Des extensions de garantie sont disponibles en option, allant jusqu'à 24 mois."
   }
 ];
+
+// Données des canaux de contact
+const contactChannels = [
+  {
+    title: "Email",
+    description: "Notre équipe vous répond sous 24h ouvrées",
+    icon: "lucide:mail",
+    value: "contact@njiautopro.fr",
+    link: "mailto:contact@njiautopro.fr",
+    color: "text-blue-500"
+  },
+  {
+    title: "Téléphone",
+    description: "Service client disponible 5j/7",
+    icon: "lucide:phone",
+    value: "+33 1 23 45 67 89",
+    link: "tel:+33123456789",
+    color: "text-green-500"
+  },
+  {
+    title: "Chat en direct",
+    description: "Réponse instantanée",
+    icon: "lucide:message-circle",
+    value: "Disponible 24/7",
+    link: "#chat",
+    color: "text-purple-500"
+  }
+];
 ---
 
 <BaseLayout
@@ -43,292 +70,262 @@ const faqs = [
   <div class="container mx-auto px-4 py-8">
     <Breadcrumb items={breadcrumbItems} />
     
-    <!-- Contact Hero Section -->
-    <section class="py-12">
-      <div class="text-center mb-12">
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-          Contactez-nous
-        </h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Notre équipe est à votre disposition pour répondre à vos questions et vous accompagner dans votre activité automobile B2B.
-        </p>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-12 pb-12">
+      <!-- Gradient Background -->
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 z-0"></div>
+      
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 z-0 opacity-20 dark:opacity-10">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-[var(--color-primary-700)]/30 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/20 rounded-full filter blur-3xl"></div>
       </div>
-    </section>
-    
-    <!-- Contact Grid -->
-    <section class="py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-        <!-- Formulaire de contact -->
-        <div class="lg:col-span-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-            Envoyez-nous un message
-          </h2>
-          
-          <form class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="nom" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Nom complet*
-                </label>
-                <input 
-                  type="text" 
-                  id="nom" 
-                  name="nom" 
-                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
-                  required
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Email professionnel*
-                </label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
-                  required
-                />
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="telephone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Téléphone
-                </label>
-                <input 
-                  type="tel" 
-                  id="telephone" 
-                  name="telephone" 
-                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
-                />
-              </div>
-              <div>
-                <label for="entreprise" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Nom de l'entreprise*
-                </label>
-                <input 
-                  type="text" 
-                  id="entreprise" 
-                  name="entreprise" 
-                  class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
-                  required
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label for="sujet" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Sujet*
-              </label>
-              <select 
-                id="sujet" 
-                name="sujet" 
-                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
-                required
-              >
-                <option value="">Sélectionnez un sujet</option>
-                <option value="inscription">Demande d'accès à la plateforme</option>
-                <option value="information">Informations générales</option>
-                <option value="partenariat">Proposition de partenariat</option>
-                <option value="assistance">Assistance technique</option>
-                <option value="autre">Autre</option>
-              </select>
-            </div>
-            
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                Message*
-              </label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="6" 
-                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5"
-                required
-              ></textarea>
-            </div>
-            
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="privacy"
-                  type="checkbox"
-                  class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
-                  required
-                />
-              </div>
-              <div class="ml-3 text-sm">
-                <label for="privacy" class="text-gray-600 dark:text-gray-400">
-                  J'accepte que mes données soient traitées conformément à la <a href="/politique-confidentialite" class="text-primary hover:underline">politique de confidentialité</a>*
-                </label>
-              </div>
-            </div>
-            
-            <div>
-              <GreenButton type="submit" size="lg" class="w-full sm:w-auto">
-                Envoyer le message
-              </GreenButton>
-            </div>
-          </form>
-        </div>
-        
-        <!-- Informations de contact -->
-        <div class="lg:col-span-2 space-y-6">
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">
-              Coordonnées
-            </h3>
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <div class="flex-shrink-0 mt-1">
-                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon name="lucide:mail" class="h-5 w-5 text-primary" />
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm font-medium text-gray-900 dark:text-white">Email</p>
-                  <a href="mailto:contact@njiautopro.fr" class="text-primary hover:underline mt-1 block">
-                    contact@njiautopro.fr
-                  </a>
-                </div>
-              </div>
-              
-              <div class="flex items-start">
-                <div class="flex-shrink-0 mt-1">
-                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon name="lucide:phone" class="h-5 w-5 text-primary" />
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm font-medium text-gray-900 dark:text-white">Téléphone</p>
-                  <a href="tel:+33123456789" class="text-gray-600 dark:text-gray-400 hover:text-primary mt-1 block">
-                    +33 1 23 45 67 89
-                  </a>
-                </div>
-              </div>
-              
-              <div class="flex items-start">
-                <div class="flex-shrink-0 mt-1">
-                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon name="lucide:map-pin" class="h-5 w-5 text-primary" />
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm font-medium text-gray-900 dark:text-white">Adresse</p>
-                  <p class="text-gray-600 dark:text-gray-400 mt-1">
-                    123 Avenue de la République<br>
-                    75011 Paris<br>
-                    France
-                  </p>
-                </div>
-              </div>
-              
-              <div class="flex items-start">
-                <div class="flex-shrink-0 mt-1">
-                  <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon name="lucide:clock" class="h-5 w-5 text-primary" />
-                  </div>
-                </div>
-                <div class="ml-4">
-                  <p class="text-sm font-medium text-gray-900 dark:text-white">Horaires</p>
-                  <p class="text-gray-600 dark:text-gray-400 mt-1">
-                    Lundi - Vendredi : 9h00 - 18h00<br>
-                    Fermé les weekends et jours fériés
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-gray-50 dark:bg-gray-800/30 rounded-xl p-6">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Suivez-nous
-            </h3>
-            <div class="flex space-x-4">
-              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
-                <Icon name="lucide:linkedin" class="h-5 w-5" />
-              </a>
-              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
-                <Icon name="lucide:facebook" class="h-5 w-5" />
-              </a>
-              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
-                <Icon name="lucide:twitter" class="h-5 w-5" />
-              </a>
-              <a href="#" class="w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary hover:border-primary transition-colors">
-                <Icon name="lucide:instagram" class="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-        </div>
+      
+      <!-- Subtle Grid Pattern -->
+      <div class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+        style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 40px 40px;">
       </div>
-    </section>
-    
-    <!-- Carte -->
-    <section class="py-12">
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 overflow-hidden">
-        <div class="aspect-[16/9] w-full bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-          <!-- Emplacement pour une iframe Google Maps ou une image statique -->
-          <div class="text-center p-8">
-            <Icon name="lucide:map" class="h-12 w-12 text-primary mx-auto mb-4" />
-            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Carte de localisation</h4>
-            <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
-              Cette section contiendrait normalement une carte interactive. Pour respecter les performances, elle a été remplacée par ce placeholder.
-            </p>
+      
+      <div class="relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Contactez-nous
           </div>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 dark:text-white mb-6">
+            Nous sommes là pour vous aider
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-light">
+            Notre équipe dédiée est à votre disposition pour répondre à vos questions et vous accompagner dans votre activité automobile B2B.
+          </p>
         </div>
-      </div>
-    </section>
-    
-    <!-- FAQ -->
-    <section class="py-12">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-          Questions fréquentes
-        </h2>
-        
-        <div class="space-y-6">
-          {faqs.map((faq, index) => (
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                {faq.question}
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400">
-                {faq.answer}
-              </p>
+
+        <!-- Canaux de contact -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {contactChannels.map(channel => (
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 group">
+              <div class="w-12 h-12 bg-[var(--color-primary-700)]/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[var(--color-primary-700)]/20 transition-colors duration-300">
+                <Icon name={channel.icon} class={`h-6 w-6 ${channel.color}`} />
+              </div>
+              <h3 class="text-xl font-light text-gray-900 dark:text-white mb-2">{channel.title}</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 font-light">{channel.description}</p>
+              <a href={channel.link} class="text-[var(--color-primary-700)] hover:underline font-light inline-flex items-center">
+                {channel.value}
+                <Icon name="lucide:arrow-right" class="h-4 w-4 ml-2" />
+              </a>
             </div>
           ))}
         </div>
       </div>
     </section>
-    
-    <!-- CTA -->
-    <section class="py-12">
-      <div class="bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl p-8 md:p-12">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Vous n'avez pas trouvé la réponse à votre question ?
+
+    <!-- Formulaire de contact -->
+    <section class="py-16 bg-white dark:bg-gray-900 rounded-2xl relative overflow-hidden mb-12">
+      <!-- Background Pattern -->
+      <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-[var(--color-primary-700)]/10 to-transparent rounded-bl-full z-0"></div>
+      <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-t from-[var(--color-primary-700)]/10 to-transparent rounded-tr-full z-0"></div>
+      
+      <div class="max-w-4xl mx-auto relative z-10">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+            Envoyez-nous un message
+          </div>
+          <h2 class="text-3xl font-light text-gray-900 dark:text-white mb-4">
+            Remplissez le formulaire ci-dessous
           </h2>
-          <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
-            Notre équipe dédiée est prête à vous aider. N'hésitez pas à nous contacter.
+          <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-light">
+            Nous vous répondrons dans les plus brefs délais pour vous accompagner dans votre projet.
           </p>
-          <div class="flex items-center justify-center gap-4">
-            <GreenButton size="lg">
-              <a href="tel:+33123456789">
-                <Icon name="lucide:phone" class="h-5 w-5 mr-2 inline-block" />
-                Nous appeler
-              </a>
-            </GreenButton>
-            <Button variant="outline" size="lg">
-              <a href="mailto:contact@njiautopro.fr">
-                <Icon name="lucide:mail" class="h-5 w-5 mr-2 inline-block" />
-                Envoyer un email
-              </a>
+        </div>
+        
+        <form class="space-y-6 bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-100 dark:border-gray-700">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="nom" class="block text-sm font-light text-gray-700 dark:text-gray-300 mb-1">
+                Nom complet*
+              </label>
+              <input 
+                type="text" 
+                id="nom" 
+                name="nom" 
+                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 font-light"
+                required
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-light text-gray-700 dark:text-gray-300 mb-1">
+                Email professionnel*
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 font-light"
+                required
+              />
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="telephone" class="block text-sm font-light text-gray-700 dark:text-gray-300 mb-1">
+                Téléphone
+              </label>
+              <input 
+                type="tel" 
+                id="telephone" 
+                name="telephone" 
+                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 font-light"
+              />
+            </div>
+            <div>
+              <label for="entreprise" class="block text-sm font-light text-gray-700 dark:text-gray-300 mb-1">
+                Nom de l'entreprise*
+              </label>
+              <input 
+                type="text" 
+                id="entreprise" 
+                name="entreprise" 
+                class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 font-light"
+                required
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label for="sujet" class="block text-sm font-light text-gray-700 dark:text-gray-300 mb-1">
+              Sujet*
+            </label>
+            <select 
+              id="sujet" 
+              name="sujet" 
+              class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 font-light"
+              required
+            >
+              <option value="">Sélectionnez un sujet</option>
+              <option value="inscription">Demande d'accès à la plateforme</option>
+              <option value="information">Informations générales</option>
+              <option value="partenariat">Proposition de partenariat</option>
+              <option value="assistance">Assistance technique</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-light text-gray-700 dark:text-gray-300 mb-1">
+              Message*
+            </label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="6" 
+              class="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2.5 font-light"
+              required
+            ></textarea>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input
+                id="privacy"
+                type="checkbox"
+                class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                required
+              />
+            </div>
+            <div class="ml-3 text-sm">
+              <label for="privacy" class="text-gray-600 dark:text-gray-400 font-light">
+                J'accepte que mes données soient traitées conformément à la <a href="/politique-confidentialite" class="text-primary hover:underline">politique de confidentialité</a>*
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <Button type="submit" variant="green" size="lg" class="w-full sm:w-auto">
+              Envoyer le message
+              <Icon name="lucide:arrow-right" class="h-5 w-5 ml-2" />
             </Button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Carte et informations -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-800/30 rounded-2xl relative overflow-hidden my-12">
+      <!-- Background Decoration -->
+      <div class="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.05]"
+        style="background-image: radial-gradient(#3ECF8E 1px, transparent 1px); background-size: 30px 30px;">
+      </div>
+      
+      <div class="relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <!-- Carte -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700 overflow-hidden">
+            <div class="aspect-[16/9] w-full bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
+              <div class="text-center p-8">
+                <Icon name="lucide:map" class="h-12 w-12 text-primary mx-auto mb-4" />
+                <h4 class="text-lg font-light text-gray-900 dark:text-white mb-2">Notre localisation</h4>
+                <p class="text-gray-600 dark:text-gray-400 max-w-md mx-auto font-light">
+                  123 Avenue de la République<br>
+                  75011 Paris<br>
+                  France
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Horaires et réseaux sociaux -->
+          <div class="space-y-6">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+              <h3 class="text-xl font-light text-gray-900 dark:text-white mb-6">
+                Horaires d'ouverture
+              </h3>
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600 dark:text-gray-400 font-light">Lundi - Vendredi</span>
+                  <span class="text-gray-900 dark:text-white font-light">9h00 - 18h00</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600 dark:text-gray-400 font-light">Samedi</span>
+                  <span class="text-gray-900 dark:text-white font-light">Fermé</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600 dark:text-gray-400 font-light">Dimanche</span>
+                  <span class="text-gray-900 dark:text-white font-light">Fermé</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+              <h3 class="text-xl font-light text-gray-900 dark:text-white mb-6">
+                Suivez-nous
+              </h3>
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 rounded-lg bg-[var(--color-primary-700)]/10 flex items-center justify-center text-[var(--color-primary-700)] hover:bg-[var(--color-primary-700)]/20 transition-colors">
+                  <Icon name="lucide:linkedin" class="h-5 w-5" />
+                </a>
+                <a href="#" class="w-10 h-10 rounded-lg bg-[var(--color-primary-700)]/10 flex items-center justify-center text-[var(--color-primary-700)] hover:bg-[var(--color-primary-700)]/20 transition-colors">
+                  <Icon name="lucide:facebook" class="h-5 w-5" />
+                </a>
+                <a href="#" class="w-10 h-10 rounded-lg bg-[var(--color-primary-700)]/10 flex items-center justify-center text-[var(--color-primary-700)] hover:bg-[var(--color-primary-700)]/20 transition-colors">
+                  <Icon name="lucide:twitter" class="h-5 w-5" />
+                </a>
+                <a href="#" class="w-10 h-10 rounded-lg bg-[var(--color-primary-700)]/10 flex items-center justify-center text-[var(--color-primary-700)] hover:bg-[var(--color-primary-700)]/20 transition-colors">
+                  <Icon name="lucide:instagram" class="h-5 w-5" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </div>
 </BaseLayout>
+
+<style>
+  /* Animation pour les éléments au survol */
+  .group:hover {
+    transform: translateY(-2px);
+  }
+</style>
