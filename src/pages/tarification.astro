@@ -1,0 +1,474 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<BaseLayout
+  title="Tarification - NJI Auto Pro"
+  description="Découvrez nos offres et tarifs pour la plateforme B2B NJI Auto Pro, conçue pour les professionnels de l'automobile."
+>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+          Nos offres
+        </div>
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 leading-tight">
+          Une tarification adaptée<br />à vos besoins
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+          Des formules flexibles pour accompagner la croissance de votre activité, quelle que soit la taille de votre entreprise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarifs -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <!-- Plans mensuels / annuels toggle -->
+        <div class="flex justify-center mb-12">
+          <div class="bg-gray-100 dark:bg-gray-800 p-1 rounded-lg inline-flex items-center">
+            <button id="monthly-toggle" class="px-4 py-2 rounded-md text-sm font-medium bg-white dark:bg-gray-700 shadow-sm text-gray-900 dark:text-white">
+              Mensuel
+            </button>
+            <button id="annual-toggle" class="px-4 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300">
+              Annuel (-15%)
+            </button>
+          </div>
+        </div>
+
+        <!-- Plans de tarification -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Plan Démarrage -->
+          <div class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-6 bg-white dark:bg-gray-900">
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">Démarrage</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Pour les petits revendeurs et concessionnaires indépendants
+              </p>
+              <div class="mb-6">
+                <span class="text-4xl font-light text-gray-900 dark:text-white" id="starter-price">99€</span>
+                <span class="text-gray-500 dark:text-gray-400">/mois</span>
+              </div>
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Jusqu'à 50 véhicules</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">2 utilisateurs</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">CRM de base</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Rapports mensuels</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Support par email</span>
+                </li>
+              </ul>
+              <Button
+                variant="outline"
+                href="/auth/register?plan=starter"
+                class="w-full justify-center"
+              >
+                Commencer
+              </Button>
+            </div>
+          </div>
+
+          <!-- Plan Professionnel -->
+          <div class="border-2 border-[var(--color-primary-700)] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg relative">
+            <div class="absolute top-0 right-0 bg-[var(--color-primary-700)] text-white text-xs font-medium px-3 py-1 rounded-bl-lg">
+              RECOMMANDÉ
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-900">
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">Professionnel</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Pour les concessionnaires et groupes de taille moyenne
+              </p>
+              <div class="mb-6">
+                <span class="text-4xl font-light text-gray-900 dark:text-white" id="pro-price">249€</span>
+                <span class="text-gray-500 dark:text-gray-400">/mois</span>
+              </div>
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Jusqu'à 500 véhicules</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">10 utilisateurs</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">CRM avancé + automatisations</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Analyses en temps réel</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Support prioritaire</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">API access</span>
+                </li>
+              </ul>
+              <Button
+                variant="green"
+                href="/auth/register?plan=pro"
+                class="w-full justify-center shadow-sm"
+              >
+                Commencer
+              </Button>
+            </div>
+          </div>
+
+          <!-- Plan Entreprise -->
+          <div class="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md">
+            <div class="p-6 bg-white dark:bg-gray-900">
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-2">Entreprise</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
+                Pour les grands groupes et importateurs
+              </p>
+              <div class="mb-6">
+                <span class="text-4xl font-light text-gray-900 dark:text-white" id="enterprise-price">Sur mesure</span>
+              </div>
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Véhicules illimités</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Utilisateurs illimités</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Intégration ERP/DMS</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Analytics personnalisés</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">Account manager dédié</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-gray-600 dark:text-gray-300">SLA garantis</span>
+                </li>
+              </ul>
+              <Button
+                variant="outline"
+                href="/contact?subject=Tarif Entreprise"
+                class="w-full justify-center"
+              >
+                Nous contacter
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tableau comparatif -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-light text-gray-900 dark:text-white mb-8 text-center">
+          Comparaison des fonctionnalités
+        </h2>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+            <thead>
+              <tr class="bg-gray-100 dark:bg-gray-700">
+                <th class="px-6 py-4 text-left text-gray-900 dark:text-white font-medium">Fonctionnalités</th>
+                <th class="px-6 py-4 text-center text-gray-900 dark:text-white font-medium">Démarrage</th>
+                <th class="px-6 py-4 text-center text-gray-900 dark:text-white font-medium">Professionnel</th>
+                <th class="px-6 py-4 text-center text-gray-900 dark:text-white font-medium">Entreprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Gestion de parc</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Nombre de véhicules</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">50</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">500</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Illimités</td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">CRM automobile</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Basique</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Avancé</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Personnalisé</td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Analyse de marché</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Limitée</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Integration API</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-gray-400 dark:text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Import/Export massif</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-gray-400 dark:text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-[var(--color-primary-700)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Support</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Email</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Email & Téléphone</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Manager dédié</td>
+              </tr>
+              <tr class="border-t border-gray-200 dark:border-gray-700">
+                <td class="px-6 py-4 text-gray-800 dark:text-gray-200">Intégration DMS</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">
+                  <svg class="w-5 h-5 text-gray-400 dark:text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Basique</td>
+                <td class="px-6 py-4 text-center text-gray-800 dark:text-gray-200">Complète</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-light text-gray-900 dark:text-white mb-12 text-center">
+          Questions fréquentes
+        </h2>
+        
+        <div class="space-y-6">
+          <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">Puis-je changer de forfait à tout moment?</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Oui, vous pouvez passer à un forfait supérieur à tout moment. Le changement prend effet immédiatement et le montant est calculé au prorata. Pour passer à un forfait inférieur, le changement prendra effet à la fin de votre période de facturation en cours.
+            </p>
+          </div>
+          
+          <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">Comment fonctionne la période d'essai?</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Tous nos forfaits comprennent une période d'essai gratuite de 14 jours. Aucune carte de crédit n'est requise pour commencer. Vous ne serez facturé qu'à la fin de cette période si vous décidez de continuer à utiliser nos services.
+            </p>
+          </div>
+          
+          <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">Quels moyens de paiement acceptez-vous?</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Nous acceptons les cartes de crédit (Visa, Mastercard, American Express), les virements bancaires SEPA et les prélèvements automatiques. Pour les forfaits Entreprise, nous pouvons également établir des factures avec paiement à 30 jours.
+            </p>
+          </div>
+          
+          <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">Proposez-vous des remises pour les groupes?</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Oui, nous proposons des tarifs spéciaux pour les groupes automobiles avec plusieurs sites. Contactez notre équipe commerciale pour discuter de vos besoins spécifiques et obtenir une offre personnalisée.
+            </p>
+          </div>
+          
+          <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+            <h3 class="text-xl font-light text-gray-900 dark:text-white mb-3">Puis-je annuler à tout moment?</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Oui, vous pouvez annuler votre abonnement à tout moment. Pour les abonnements mensuels, l'annulation prend effet à la fin du mois en cours. Pour les abonnements annuels, nous proposons un remboursement au prorata pour les mois non utilisés.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-light text-gray-900 dark:text-white mb-6">
+          Prêt à optimiser votre activité automobile?
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Commencez votre période d'essai gratuite de 14 jours dès aujourd'hui.<br>
+          Aucune carte de crédit n'est requise.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            variant="green"
+            size="lg"
+            href="/auth/register"
+            class="px-8 py-4 rounded-md shadow-sm"
+          >
+            Démarrer l'essai gratuit
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            href="/contact"
+            class="px-8 py-4 rounded-md"
+          >
+            Contactez-nous
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Gestion du toggle mensuel/annuel
+  document.addEventListener('DOMContentLoaded', () => {
+    const monthlyToggle = document.getElementById('monthly-toggle');
+    const annualToggle = document.getElementById('annual-toggle');
+    
+    const starterPrice = document.getElementById('starter-price');
+    const proPrice = document.getElementById('pro-price');
+    
+    const monthlyPrices = {
+      starter: '99€',
+      pro: '249€'
+    };
+    
+    const annualPrices = {
+      starter: '84€',
+      pro: '212€'
+    };
+    
+    if (monthlyToggle && annualToggle) {
+      monthlyToggle.addEventListener('click', () => {
+        // UI update
+        monthlyToggle.classList.add('bg-white', 'dark:bg-gray-700', 'shadow-sm', 'text-gray-900', 'dark:text-white');
+        monthlyToggle.classList.remove('text-gray-700', 'dark:text-gray-300');
+        
+        annualToggle.classList.remove('bg-white', 'dark:bg-gray-700', 'shadow-sm', 'text-gray-900', 'dark:text-white');
+        annualToggle.classList.add('text-gray-700', 'dark:text-gray-300');
+        
+        // Update prices
+        if (starterPrice) starterPrice.textContent = monthlyPrices.starter;
+        if (proPrice) proPrice.textContent = monthlyPrices.pro;
+      });
+      
+      annualToggle.addEventListener('click', () => {
+        // UI update
+        annualToggle.classList.add('bg-white', 'dark:bg-gray-700', 'shadow-sm', 'text-gray-900', 'dark:text-white');
+        annualToggle.classList.remove('text-gray-700', 'dark:text-gray-300');
+        
+        monthlyToggle.classList.remove('bg-white', 'dark:bg-gray-700', 'shadow-sm', 'text-gray-900', 'dark:text-white');
+        monthlyToggle.classList.add('text-gray-700', 'dark:text-gray-300');
+        
+        // Update prices
+        if (starterPrice) starterPrice.textContent = annualPrices.starter;
+        if (proPrice) proPrice.textContent = annualPrices.pro;
+      });
+    }
+  });
+</script>

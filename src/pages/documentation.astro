@@ -1,0 +1,392 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<BaseLayout
+  title="Documentation - NJI Auto Pro"
+  description="Documentation complète de la plateforme NJI Auto Pro pour les professionnels de l'automobile."
+>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+          Ressources
+        </div>
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 leading-tight">
+          Documentation
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Guides, tutoriels et documentation technique pour tirer le meilleur parti de la plateforme NJI Auto Pro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation de Documentation -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Sidebar de navigation -->
+          <div class="md:col-span-1">
+            <div class="sticky top-24 bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">
+                Catégories
+              </h3>
+              <nav class="space-y-1">
+                <a href="#commencer" class="block py-2 px-3 rounded-md bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] font-medium">
+                  Commencer
+                </a>
+                <a href="#interface" class="block py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  Interface utilisateur
+                </a>
+                <a href="#vehicules" class="block py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  Gestion des véhicules
+                </a>
+                <a href="#crm" class="block py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  CRM automobile
+                </a>
+                <a href="#rapports" class="block py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  Rapports et analyses
+                </a>
+                <a href="#api" class="block py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  API et intégrations
+                </a>
+                <a href="#faq" class="block py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                  FAQ
+                </a>
+              </nav>
+              
+              <div class="mt-8">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">
+                  Ressources
+                </h3>
+                <ul class="space-y-2">
+                  <li>
+                    <a href="#" class="flex items-center text-[var(--color-primary-700)] hover:underline">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                      Guide PDF
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center text-[var(--color-primary-700)] hover:underline">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                      Tutoriels vidéo
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="flex items-center text-[var(--color-primary-700)] hover:underline">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Notes de version
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contenu principal -->
+          <div class="md:col-span-3">
+            <!-- Section Commencer -->
+            <div id="commencer" class="mb-16">
+              <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-[var(--color-primary-700)]/10 rounded-full flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-primary-700)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h2 class="text-2xl font-light text-gray-900 dark:text-white">Commencer</h2>
+              </div>
+              
+              <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+                <p>
+                  Bienvenue sur la plateforme NJI Auto Pro ! Cette documentation vous guidera à travers toutes les fonctionnalités de notre solution dédiée aux professionnels de l'automobile.
+                </p>
+                <p>
+                  Pour commencer à utiliser la plateforme, suivez ces étapes simples :
+                </p>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <div class="flex items-center mb-4">
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] font-medium mr-3">
+                      1
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Créer un compte</h3>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Inscrivez-vous en fournissant les informations de votre entreprise et vérifiez votre compte via l'email de confirmation.
+                  </p>
+                  <a href="/auth/register" class="text-[var(--color-primary-700)] hover:underline flex items-center">
+                    S'inscrire
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <div class="flex items-center mb-4">
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] font-medium mr-3">
+                      2
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Configurer votre profil</h3>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Complétez votre profil professionnel avec les informations de votre entreprise et vos préférences.
+                  </p>
+                  <a href="#" class="text-[var(--color-primary-700)] hover:underline flex items-center">
+                    Voir le guide
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <div class="flex items-center mb-4">
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] font-medium mr-3">
+                      3
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Ajouter des véhicules</h3>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Commencez à ajouter vos véhicules manuellement ou importez-les depuis un fichier CSV.
+                  </p>
+                  <a href="#" class="text-[var(--color-primary-700)] hover:underline flex items-center">
+                    Guide d'import
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <div class="flex items-center mb-4">
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] font-medium mr-3">
+                      4
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white">Explorer les fonctionnalités</h3>
+                  </div>
+                  <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Familiarisez-vous avec le tableau de bord, les rapports et les outils de gestion de parc.
+                  </p>
+                  <a href="#" class="text-[var(--color-primary-700)] hover:underline flex items-center">
+                    Tour guidé
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              
+              <div class="bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white">Besoin d'aide?</h3>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  Notre équipe de support est disponible pour vous aider à démarrer. N'hésitez pas à nous contacter si vous avez des questions ou rencontrez des difficultés.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                  <a href="/contact" class="inline-flex items-center px-4 py-2 border border-[var(--color-primary-700)] text-[var(--color-primary-700)] rounded-md hover:bg-[var(--color-primary-700)]/10 transition-colors">
+                    Contacter le support
+                  </a>
+                  <a href="#" class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    Voir les tutoriels
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Section Interface -->
+            <div id="interface" class="mb-16">
+              <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-[var(--color-primary-700)]/10 rounded-full flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-primary-700)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h2 class="text-2xl font-light text-gray-900 dark:text-white">Interface utilisateur</h2>
+              </div>
+              
+              <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+                <p>
+                  L'interface de NJI Auto Pro a été conçue pour être intuitive et efficace, avec un accès rapide à toutes les fonctionnalités essentielles.
+                </p>
+              </div>
+              
+              <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm mb-8">
+                <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Tableau de bord principal</h3>
+                <div class="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-4">
+                  <p class="text-gray-500 dark:text-gray-400">Capture d'écran du tableau de bord</p>
+                </div>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Le tableau de bord vous donne une vue d'ensemble de votre activité avec des widgets personnalisables pour suivre vos KPIs, l'état de votre stock, les dernières ventes et les alertes importantes.
+                </p>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Navigation principale</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    La barre de navigation latérale vous donne accès à tous les modules: Véhicules, Clients, Ventes, Rapports, Paramètres, etc.
+                  </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Préférences utilisateur</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Personnalisez votre expérience en ajustant les préférences d'affichage, les notifications et les raccourcis.
+                  </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Recherche globale</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Utilisez la fonction de recherche pour trouver rapidement des véhicules, clients ou documents par mot-clé.
+                  </p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Mode sombre</h3>
+                  <p class="text-gray-600 dark:text-gray-300">
+                    Activez le mode sombre pour réduire la fatigue oculaire lors d'une utilisation prolongée ou en environnement peu éclairé.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Autres sections - pour cette démo, je n'ai inclus que des ancres -->
+            <div id="vehicules" class="mb-16">
+              <div class="flex items-center mb-6">
+                <div class="w-10 h-10 bg-[var(--color-primary-700)]/10 rounded-full flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-primary-700)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                  </svg>
+                </div>
+                <h2 class="text-2xl font-light text-gray-900 dark:text-white">Gestion des véhicules</h2>
+              </div>
+              
+              <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
+                <p>
+                  Le module de gestion des véhicules vous permet de gérer efficacement votre parc automobile, depuis l'ajout de nouveaux véhicules jusqu'au suivi de leur cycle de vie.
+                </p>
+              </div>
+              
+              <!-- Contenu de la section - Ajoutez votre contenu ici -->
+              <div class="bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 text-center">
+                <p class="text-gray-600 dark:text-gray-300">
+                  Contenu de la section en cours de développement. Revenez bientôt pour plus d'informations.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Ancres pour les autres sections -->
+            <div id="crm" class="mb-16">
+              <!-- Section CRM Automobile -->
+            </div>
+            
+            <div id="rapports" class="mb-16">
+              <!-- Section Rapports et Analyses -->
+            </div>
+            
+            <div id="api" class="mb-16">
+              <!-- Section API et Intégrations -->
+            </div>
+            
+            <div id="faq" class="mb-16">
+              <!-- Section FAQ -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Documentation -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 md:p-10 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-2/3">
+              <h2 class="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-4">
+                Vous n'avez pas trouvé ce que vous cherchiez?
+              </h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6">
+                Notre équipe de support est disponible pour vous aider. Consultez également notre base de connaissances complète.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4">
+                <Button
+                  variant="green"
+                  href="/contact"
+                  class="px-6 py-3 rounded-md"
+                >
+                  Contacter le support
+                </Button>
+                <Button
+                  variant="outline"
+                  href="#"
+                  class="px-6 py-3 rounded-md"
+                >
+                  Base de connaissances
+                </Button>
+              </div>
+            </div>
+            <div class="md:w-1/3 flex justify-center">
+              <div class="w-24 h-24 rounded-full bg-[var(--color-primary-700)]/10 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[var(--color-primary-700)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Gestion du scrolling smooth pour les ancres
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100, // Offset pour tenir compte du header
+            behavior: 'smooth'
+          });
+          
+          // Update active link
+          document.querySelectorAll('nav a').forEach(navLink => {
+            navLink.classList.remove('bg-[var(--color-primary-700)]/10', 'text-[var(--color-primary-700)]', 'font-medium');
+            navLink.classList.add('text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-100', 'dark:hover:bg-gray-700');
+          });
+          
+          this.classList.add('bg-[var(--color-primary-700)]/10', 'text-[var(--color-primary-700)]', 'font-medium');
+          this.classList.remove('text-gray-700', 'dark:text-gray-300', 'hover:bg-gray-100', 'dark:hover:bg-gray-700');
+        }
+      });
+    });
+  });
+</script>

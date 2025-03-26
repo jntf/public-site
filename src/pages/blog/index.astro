@@ -1,0 +1,399 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/ui/Button.astro";
+---
+
+<BaseLayout
+  title="Blog - NJI Auto Pro"
+  description="Actualités, tendances et conseils pour les professionnels de l'automobile - NJI Auto Pro"
+>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+          Actualités & Insights
+        </div>
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 leading-tight">
+          Blog
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Découvrez les dernières actualités, tendances et conseils pour les professionnels de l'automobile.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catégories de blog -->
+  <section class="py-8 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="/blog" class="px-4 py-2 bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] rounded-full font-medium transition-colors hover:bg-[var(--color-primary-700)]/20">
+            Tous les articles
+          </a>
+          <a href="/blog?category=marche" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+            Marché automobile
+          </a>
+          <a href="/blog?category=tendances" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+            Tendances
+          </a>
+          <a href="/blog?category=conseils" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+            Conseils pro
+          </a>
+          <a href="/blog?category=technologie" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+            Technologie
+          </a>
+          <a href="/blog?category=reglementation" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+            Réglementation
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles en vedette -->
+  <section class="py-12 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-8">Articles en vedette</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <!-- Article en vedette principal -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Tendances
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="text-sm text-gray-500 dark:text-gray-400">26 mars 2025</span>
+                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">5 min de lecture</span>
+              </div>
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-3">
+                <a href="/blog/impact-vehicules-electriques-marche-occasion">
+                  L'impact des véhicules électriques sur le marché de l'occasion : perspectives 2025
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Analyse des tendances de reprise, valorisation et demande des véhicules électriques sur le marché de l'occasion en 2025.
+              </p>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 mr-3 flex items-center justify-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-400">MJ</span>
+                </div>
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Marc Jolivet</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Article en vedette secondaire -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Réglementation
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="text-sm text-gray-500 dark:text-gray-400">20 mars 2025</span>
+                <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">7 min de lecture</span>
+              </div>
+              <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-3">
+                <a href="/blog/nouvelles-normes-emission-impact-distributeurs">
+                  Les nouvelles normes d'émission et leur impact sur les distributeurs auto
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Comment les nouvelles réglementations européennes transforment les stratégies d'achat et de vente des professionnels.
+              </p>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 mr-3 flex items-center justify-center">
+                  <span class="text-xs text-gray-500 dark:text-gray-400">SL</span>
+                </div>
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Sophie Leroux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles récents -->
+  <section class="py-12 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-8">Articles récents</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <!-- Article 1 -->
+          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Marché automobile
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500 dark:text-gray-400">15 mars 2025</span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                <a href="/blog/tendances-marche-premium-2025">
+                  Tendances du marché premium au premier trimestre 2025
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                Analyse des ventes et perspectives pour les marques premium sur le marché européen.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Article 2 -->
+          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Technologie
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500 dark:text-gray-400">10 mars 2025</span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                <a href="/blog/intelligence-artificielle-reprise-auto">
+                  L'IA révolutionne l'estimation de reprise
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                Comment les algorithmes prédictifs changent la donne pour les professionnels de la reprise.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Article 3 -->
+          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Conseils pro
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500 dark:text-gray-400">5 mars 2025</span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                <a href="/blog/optimiser-rotation-stock">
+                  5 stratégies pour optimiser la rotation de votre stock
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                Méthodes éprouvées pour accélérer la vente et maximiser la rentabilité de votre parc.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Article 4 -->
+          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Tendances
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500 dark:text-gray-400">28 février 2025</span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                <a href="/blog/montee-modeles-chinois-europe">
+                  La montée en puissance des modèles chinois en Europe
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                Analyse de l'évolution de la présence des constructeurs chinois sur le marché européen.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Article 5 -->
+          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Réglementation
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500 dark:text-gray-400">20 février 2025</span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                <a href="/blog/nouvelles-obligations-garanties-vo">
+                  Nouvelles obligations de garantie pour les véhicules d'occasion
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                Ce que les professionnels doivent savoir sur l'évolution du cadre légal des garanties.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Article 6 -->
+          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                  Conseils pro
+                </span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center mb-2">
+                <span class="text-sm text-gray-500 dark:text-gray-400">15 février 2025</span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                <a href="/blog/digitalisation-processus-vente">
+                  Digitalisation des processus de vente : par où commencer?
+                </a>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                Guide pratique pour les concessionnaires souhaitant moderniser leur approche commerciale.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center">
+          <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+            <a
+              href="#"
+              class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              <span class="sr-only">Précédent</span>
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a
+              href="#"
+              aria-current="page"
+              class="relative inline-flex items-center px-4 py-2 border border-[var(--color-primary-700)] bg-[var(--color-primary-700)]/10 text-sm font-medium text-[var(--color-primary-700)]"
+            >
+              1
+            </a>
+            <a
+              href="#"
+              class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              2
+            </a>
+            <a
+              href="#"
+              class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              3
+            </a>
+            <span
+              class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
+              ...
+            </span>
+            <a
+              href="#"
+              class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              8
+            </a>
+            <a
+              href="#"
+              class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              <span class="sr-only">Suivant</span>
+              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100 dark:border-gray-700">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl md:text-3xl font-light text-gray-900 dark:text-white mb-3">
+            Restez informé
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300">
+            Inscrivez-vous à notre newsletter pour recevoir nos derniers articles et analyses du secteur automobile.
+          </p>
+        </div>
+        
+        <form class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            placeholder="Votre email professionnel"
+            class="flex-grow px-4 py-3 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-700)] focus:border-transparent"
+            required
+          />
+          <Button
+            variant="green"
+            type="submit"
+            class="px-6 py-3 text-base font-medium rounded-md"
+          >
+            S'inscrire
+          </Button>
+        </form>
+        
+        <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-4">
+          En vous inscrivant, vous acceptez notre <a href="/confidentialite" class="underline">politique de confidentialité</a>. Vous pouvez vous désinscrire à tout moment.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

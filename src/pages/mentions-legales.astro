@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<BaseLayout
+  title="Mentions Légales - NJI Auto Pro"
+  description="Mentions légales de NJI Auto Pro, plateforme B2B pour professionnels de l'automobile."
+>
+  <!-- Hero Section -->
+  <section class="pt-24 pb-12 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-light mb-6">
+          <span class="flex h-2 w-2 rounded-full bg-[var(--color-primary-700)] mr-2"></span>
+          Informations légales
+        </div>
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 leading-tight">
+          Mentions Légales
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Informations légales concernant NJI Auto Pro, plateforme B2B dédiée aux professionnels de l'automobile.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenu Principal -->
+  <section class="py-12 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4">Éditeur du site</h2>
+          <p>
+            Le site NJI Auto Pro est édité par la société NJI Auto Pro SAS, société par actions simplifiée au capital de 100 000 euros, immatriculée au Registre du Commerce et des Sociétés de Paris sous le numéro 123 456 789, dont le siège social est situé au 123 Avenue des Champs-Élysées, 75008 Paris, France.
+          </p>
+          <p>
+            N° TVA intracommunautaire : FR12 123 456 789<br>
+            Téléphone : +33 (0)1 23 45 67 89<br>
+            Email : contact@njiautopro.com
+          </p>
+
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 mt-8">Directeur de la publication</h2>
+          <p>
+            Le directeur de la publication est Monsieur Jean Dupont, en sa qualité de Président de la société NJI Auto Pro SAS.
+          </p>
+
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 mt-8">Hébergement</h2>
+          <p>
+            Le site NJI Auto Pro est hébergé par la société Vercel Inc., dont le siège social est situé au 340 S Lemon Ave #4133, Walnut, CA 91789, USA.
+          </p>
+
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 mt-8">Propriété intellectuelle</h2>
+          <p>
+            L'ensemble du contenu de ce site, incluant, de manière non limitative, les graphismes, images, textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de NJI Auto Pro SAS à l'exception des marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.
+          </p>
+          <p>
+            Toute reproduction, distribution, modification, adaptation, retransmission ou publication, même partielle, de ces différents éléments est strictement interdite sans l'accord exprès par écrit de NJI Auto Pro SAS.
+          </p>
+
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 mt-8">Gestion des données personnelles</h2>
+          <p>
+            Les informations recueillies sur ce site sont traitées par NJI Auto Pro SAS pour la gestion de sa clientèle et de sa prospection commerciale.
+          </p>
+          <p>
+            Conformément à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée et au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, d'effacement, et de portabilité des données vous concernant, ainsi que d'un droit d'opposition et de limitation du traitement. Vous pouvez exercer ces droits en nous contactant à l'adresse suivante : dpo@njiautopro.com.
+          </p>
+          <p>
+            Pour plus d'informations sur la gestion de vos données personnelles, veuillez consulter notre <a href="/confidentialite" class="text-[var(--color-primary-700)] hover:underline">politique de confidentialité</a>.
+          </p>
+
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 mt-8">Cookies</h2>
+          <p>
+            Le site NJI Auto Pro peut être amené à utiliser des cookies pour améliorer l'expérience utilisateur. Pour en savoir plus sur la gestion des cookies, veuillez consulter notre <a href="/cookies" class="text-[var(--color-primary-700)] hover:underline">politique de cookies</a>.
+          </p>
+
+          <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 mt-8">Contact</h2>
+          <p>
+            Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter à l'adresse suivante : juridique@njiautopro.com.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-light text-gray-900 dark:text-white mb-6">
+          Besoin d'informations supplémentaires?
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          Notre équipe juridique est à votre disposition pour répondre à toutes vos questions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            variant="green"
+            size="lg"
+            href="/contact"
+            class="px-8 py-4 rounded-md"
+          >
+            Nous contacter
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
