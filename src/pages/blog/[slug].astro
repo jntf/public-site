@@ -1,221 +1,132 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/ui/Button.astro";
+import { getArticles, getArticleBySlug } from "../../lib/contentful";
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
 
-// Cette fonction définit les chemins possibles pour cette page
+// Activer le rendu à la demande pour les nouvelles pages
+export const prerender = false;
+
+// Générer les routes statiques pour les articles existants (mais permet aussi le rendu dynamique)
 export async function getStaticPaths() {
-  // Dans un site réel, ces données proviendraient d'une API ou d'un CMS
-  const articles = [
-    {
-      slug: "impact-vehicules-electriques-marche-occasion",
-      title: "L'impact des véhicules électriques sur le marché de l'occasion : perspectives 2025",
-      date: "26 mars 2025",
-      category: "Tendances",
-      author: {
-        name: "Marc Jolivet",
-        initials: "MJ",
-        title: "Analyste marché automobile"
-      },
-      readingTime: "5 min",
-      excerpt: "Analyse des tendances de reprise, valorisation et demande des véhicules électriques sur le marché de l'occasion en 2025.",
-      content: `
-        <p>Le marché de l'occasion automobile connaît une transformation majeure avec l'arrivée massive de véhicules électriques en fin de leasing ou de première main. Cette évolution bouleverse les modèles traditionnels d'évaluation et de revente, créant à la fois des opportunités et des défis pour les professionnels du secteur.</p>
-        
-        <h2>Une offre en forte croissance</h2>
-        <p>D'après les dernières données du marché, le volume de véhicules électriques d'occasion a augmenté de 87% au premier trimestre 2025 par rapport à la même période en 2024. Cette augmentation s'explique principalement par l'arrivée sur le marché secondaire des premiers véhicules issus des vagues d'adoption massive de 2021-2022.</p>
-        
-        <p>Les modèles les plus représentés sur ce marché sont:</p>
-        <ul>
-          <li>Tesla Model 3 (2021-2022)</li>
-          <li>Renault Zoé (2020-2022)</li>
-          <li>Volkswagen ID.3 et ID.4 (2021-2022)</li>
-          <li>Peugeot e-208 (2020-2022)</li>
-        </ul>
-        
-        <h2>Évolution des valeurs résiduelles</h2>
-        <p>La question de la valeur résiduelle, longtemps point d'incertitude pour les véhicules électriques, commence à trouver des réponses plus claires. En moyenne, les véhicules électriques conservent 52% de leur valeur après 3 ans et 40 000 km, contre 58% pour leurs équivalents thermiques.</p>
-        
-        <p>Cependant, cette tendance générale masque d'importantes disparités:</p>
-        
-        <ul>
-          <li>Les modèles premium (Tesla, Polestar, BMW i4) maintiennent mieux leur valeur, avec des taux de conservation pouvant atteindre 65% après 3 ans</li>
-          <li>Les premiers modèles électriques avec des autonomies limitées (<250 km) subissent une décote plus importante</li>
-          <li>L'état de la batterie devient le facteur déterminant dans l'évaluation, plus que le kilométrage général</li>
-        </ul>
-        
-        <h2>Nouveaux critères d'évaluation</h2>
-        <p>L'évaluation des véhicules électriques d'occasion nécessite de nouveaux repères et outils. Les professionnels doivent désormais intégrer:</p>
-        
-        <ul>
-          <li>La capacité résiduelle de la batterie (State of Health)</li>
-          <li>L'historique des recharges (rapides vs. lentes)</li>
-          <li>Les mises à jour logicielles installées</li>
-          <li>La compatibilité avec les standards de recharge actuels</li>
-        </ul>
-        
-        <p>Ces nouveaux paramètres requièrent une expertise spécifique et des outils de diagnostic adaptés. Les plateformes traditionnelles d'évaluation peinent encore à intégrer ces critères de manière fiable.</p>
-        
-        <h2>Profil des acheteurs de VE d'occasion</h2>
-        <p>Le profil type de l'acheteur de véhicule électrique d'occasion évolue également. Alors qu'en 2022-2023, ces véhicules attiraient principalement des "early adopters" technophiles, le marché s'élargit désormais à:</p>
-        
-        <ul>
-          <li>Une clientèle urbaine et périurbaine sensible aux restrictions de circulation (ZFE)</li>
-          <li>Des entreprises cherchant à verdir leur flotte sans investissement initial important</li>
-          <li>Des ménages multi-motorisés qui adoptent l'électrique comme second véhicule</li>
-        </ul>
-        
-        <p>Cette diversification de la demande contribue à stabiliser le marché et à réduire la volatilité des prix.</p>
-        
-        <h2>Enjeux pour les professionnels</h2>
-        <p>Face à ces évolutions, les acteurs du marché VO doivent adapter leurs stratégies:</p>
-        
-        <ul>
-          <li>Former les équipes commerciales aux spécificités des VE</li>
-          <li>Investir dans des outils de diagnostic batterie</li>
-          <li>Repenser les garanties proposées (avec focus sur la batterie)</li>
-          <li>Développer des services d'accompagnement (installation de bornes, conseil en recharge)</li>
-        </ul>
-        
-        <p>Les groupes qui ont anticipé cette transition récoltent aujourd'hui les fruits de leur préparation, avec des marges supérieures de 12% à 18% sur les VE d'occasion par rapport aux acteurs traditionnels.</p>
-        
-        <h2>Perspectives pour 2025-2026</h2>
-        <p>Plusieurs tendances se dessinent pour les prochains mois:</p>
-        
-        <ul>
-          <li>Une stabilisation progressive des valeurs résiduelles grâce à l'amélioration de la prédictibilité du marché</li>
-          <li>L'émergence d'un marché de seconde batterie pour donner une seconde vie aux véhicules plus anciens</li>
-          <li>Le développement de certificats de qualité standardisés pour l'état des batteries</li>
-          <li>L'apparition de spécialistes du reconditionnement de VE</li>
-        </ul>
-        
-        <p>Ces évolutions devraient contribuer à renforcer la confiance des consommateurs dans le marché de l'électrique d'occasion, accélérant ainsi la transition énergétique du parc automobile.</p>
-        
-        <h2>Conclusion</h2>
-        <p>Le marché des véhicules électriques d'occasion représente désormais un segment stratégique pour les professionnels de l'automobile. Si des incertitudes persistent, notamment concernant l'évolution des technologies de batterie et des infrastructures de recharge, les tendances actuelles indiquent une normalisation progressive et une intégration réussie dans l'écosystème de l'occasion.</p>
-        
-        <p>Pour les professionnels, l'enjeu n'est plus de savoir s'il faut s'adapter à cette nouvelle réalité, mais comment le faire plus efficacement que la concurrence.</p>
-      `
-    },
-    {
-      slug: "nouvelles-normes-emission-impact-distributeurs",
-      title: "Les nouvelles normes d'émission et leur impact sur les distributeurs auto",
-      date: "20 mars 2025",
-      category: "Réglementation",
-      author: {
-        name: "Sophie Leroux",
-        initials: "SL",
-        title: "Consultante réglementaire"
-      },
-      readingTime: "7 min",
-      excerpt: "Comment les nouvelles réglementations européennes transforment les stratégies d'achat et de vente des professionnels.",
-      content: `
-        <p>Les récentes évolutions réglementaires européennes en matière d'émissions de CO2 modifient profondément le paysage automobile et impactent directement les stratégies des distributeurs. Entre objectifs CAFE renforcés et nouvelle norme Euro 7, les professionnels doivent adapter leurs pratiques commerciales et leur gestion de stock.</p>
-        
-        <h2>Euro 7 : des exigences toujours plus strictes</h2>
-        <p>Entrée en application début 2025, la norme Euro 7 introduit des limites d'émissions significativement réduites par rapport à Euro 6. Au-delà du CO2, elle cible désormais plus strictement les oxydes d'azote (NOx), le monoxyde de carbone (CO) et les particules fines, y compris celles issues de l'usure des freins et des pneus.</p>
-        
-        <p>Pour les distributeurs, cette nouvelle norme se traduit par:</p>
-        <ul>
-          <li>Une réduction du nombre de modèles thermiques disponibles, certains ayant été retirés du marché</li>
-          <li>Une augmentation des prix des véhicules thermiques (+5 à 12% selon les segments)</li>
-          <li>Des délais d'approvisionnement allongés pour certains modèles</li>
-        </ul>
-        
-        <h2>Objectifs CAFE et pénalités renforcées</h2>
-        <p>Parallèlement, les objectifs CAFE (Corporate Average Fuel Economy) ont été resserrés, avec un niveau moyen d'émissions fixé à 93,6g CO2/km pour 2025, contre 115g en 2021. Les pénalités pour dépassement ont été portées à 125€ par gramme excédentaire et par véhicule immatriculé.</p>
-        
-        <p>Cette pression réglementaire pousse les constructeurs à:</p>
-        <ul>
-          <li>Privilégier l'allocation de véhicules électrifiés aux réseaux</li>
-          <li>Mettre en place des politiques d'incitation commerciale favorisant les véhicules à faibles émissions</li>
-          <li>Revoir les systèmes de primes et de bonus pour les distributeurs</li>
-        </ul>
-        
-        <p>Pour un réseau de distribution de taille moyenne (1000 ventes annuelles), l'impact financier d'un dépassement de 5g/km peut représenter jusqu'à 625 000€ de pénalités annuelles.</p>
-        
-        <h2>Adaptation des stratégies commerciales</h2>
-        <p>Face à ces contraintes, les distributeurs innovent et transforment leurs approches:</p>
-        
-        <h3>Gestion dynamique du mix de ventes</h3>
-        <p>Les concessionnaires développent des outils de pilotage précis de leur mix de ventes, avec des objectifs mensuels par technologie. Les responsables commerciaux suivent désormais un "carbon scoreboard" qui oriente les priorités de vente en temps réel.</p>
-        
-        <h3>Nouvelles approches marketing</h3>
-        <p>Les actions marketing évoluent avec:</p>
-        <ul>
-          <li>Des portes ouvertes thématiques centrées sur l'électrification</li>
-          <li>Des essais prolongés (jusqu'à 48h) pour les modèles électriques</li>
-          <li>Des packages "transition" combinant véhicule électrique et solution de mobilité thermique pour les longs trajets</li>
-        </ul>
-        
-        <h3>Formation renforcée des équipes</h3>
-        <p>Les meilleurs groupes investissent massivement dans la formation:</p>
-        <ul>
-          <li>Création de postes d'"expert électrique" dans chaque concession</li>
-          <li>Formation aux nouveaux argumentaires axés sur le TCO (coût total de possession)</li>
-          <li>Développement de compétences en conseil énergétique et solutions de recharge</li>
-        </ul>
-        
-        <h2>Nouvelles opportunités business</h2>
-        <p>Cette transition réglementaire ouvre également de nouvelles perspectives pour les distributeurs proactifs:</p>
-        
-        <h3>Services associés à l'électromobilité</h3>
-        <p>De nombreux concessionnaires élargissent leur offre avec:</p>
-        <ul>
-          <li>Installation et maintenance de solutions de recharge</li>
-          <li>Conseil en transition énergétique pour les flottes d'entreprise</li>
-          <li>Financement de panneaux solaires couplés aux offres de véhicules électriques</li>
-        </ul>
-        
-        <h3>Modèles commerciaux hybrides</h3>
-        <p>L'évolution réglementaire accélère aussi l'émergence de nouveaux business models:</p>
-        <ul>
-          <li>Formules d'abonnement flexible permettant de passer du thermique à l'électrique selon les besoins</li>
-          <li>Offres de mobilité combinant véhicule principal électrique et accès ponctuel à des véhicules thermiques</li>
-          <li>Packs "zéro contrainte" incluant véhicule, borne, maintenance et garantie étendue sur la batterie</li>
-        </ul>
-        
-        <h2>Perspectives et recommandations</h2>
-        <p>À l'horizon 2025-2026, plusieurs tendances se dessinent:</p>
-        
-        <ul>
-          <li>Concentration accrue du réseau de distribution, les plus petits acteurs peinant à absorber les investissements nécessaires</li>
-          <li>Développement de concessions "nouvelle génération" avec espaces dédiés aux véhicules électrifiés et infrastructures de recharge conséquentes</li>
-          <li>Importance croissante de la data pour piloter le mix de ventes et anticiper les évolutions réglementaires</li>
-        </ul>
-        
-        <p>Pour rester compétitifs dans ce contexte, les distributeurs doivent:</p>
-        
-        <ul>
-          <li>Mettre en place un suivi précis de l'empreinte carbone de leurs ventes</li>
-          <li>Former en continu les équipes aux évolutions réglementaires et technologiques</li>
-          <li>Développer des partenariats avec des acteurs de l'écosystème électrique (énergéticiens, installateurs de bornes)</li>
-          <li>Adapter leur communication pour mettre en avant leur expertise en solutions de mobilité bas-carbone</li>
-        </ul>
-        
-        <h2>Conclusion</h2>
-        <p>Les nouvelles normes d'émission représentent un défi majeur mais aussi une opportunité de transformation pour les distributeurs automobiles. Ceux qui sauront intégrer ces contraintes dans une vision stratégique renouvelée pourront non seulement survivre à cette transition, mais en tirer un avantage concurrentiel significatif.</p>
-        
-        <p>Face à ces bouleversements, l'agilité et la capacité d'anticipation deviennent les qualités essentielles des dirigeants de concessions. La révolution réglementaire est en marche, et elle redessine déjà le paysage de la distribution automobile européenne.</p>
-      `
-    }
-  ];
+  const articles = await getArticles({ limit: 100 });
+  
+  return articles.map(article => ({
+    params: { slug: article.fields.slug },
+  }));
+}
 
-  // Générer les chemins pour chaque article
-  return articles.map(article => {
-    return {
-      params: { slug: article.slug },
-      props: { article }
-    };
+// Récupérer l'article par son slug
+const { slug } = Astro.params;
+const article = await getArticleBySlug(slug);
+
+// Si l'article n'existe pas, afficher une page 404
+if (!article) {
+  return Astro.redirect('/404');
+}
+
+// Options avancées pour le rendu du Rich Text
+const richTextOptions = {
+  renderMark: {
+    [MARKS.BOLD]: (text) => `<strong class="font-bold">${text}</strong>`,
+    [MARKS.ITALIC]: (text) => `<em class="italic">${text}</em>`,
+    [MARKS.UNDERLINE]: (text) => `<u class="underline">${text}</u>`,
+    [MARKS.CODE]: (text) => `<code class="font-mono text-sm bg-gray-100 dark:bg-gray-800 p-1 rounded">${text}</code>`,
+  },
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, next) => 
+      `<p class="mb-6 leading-relaxed text-gray-700 dark:text-gray-300">${next(node.content)}</p>`,
+    [BLOCKS.HEADING_1]: (node, next) => 
+      `<h1 class="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">${next(node.content)}</h1>`,
+    [BLOCKS.HEADING_2]: (node, next) => 
+      `<h2 class="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-white">${next(node.content)}</h2>`,
+    [BLOCKS.HEADING_3]: (node, next) => 
+      `<h3 class="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-white">${next(node.content)}</h3>`,
+    [BLOCKS.HEADING_4]: (node, next) => 
+      `<h4 class="text-lg font-semibold mt-6 mb-3 text-gray-900 dark:text-white">${next(node.content)}</h4>`,
+    [BLOCKS.HEADING_5]: (node, next) => 
+      `<h5 class="text-base font-semibold mt-4 mb-2 text-gray-900 dark:text-white">${next(node.content)}</h5>`,
+    [BLOCKS.HEADING_6]: (node, next) => 
+      `<h6 class="text-sm font-semibold mt-4 mb-2 text-gray-900 dark:text-white">${next(node.content)}</h6>`,
+    [BLOCKS.UL_LIST]: (node, next) => 
+      `<ul class="list-disc pl-8 mb-6 text-gray-700 dark:text-gray-300 space-y-2">${next(node.content)}</ul>`,
+    [BLOCKS.OL_LIST]: (node, next) => 
+      `<ol class="list-decimal pl-8 mb-6 text-gray-700 dark:text-gray-300 space-y-2">${next(node.content)}</ol>`,
+    [BLOCKS.LIST_ITEM]: (node, next) => 
+      `<li class="mb-1">${next(node.content)}</li>`,
+    [BLOCKS.QUOTE]: (node, next) => 
+      `<blockquote class="pl-4 border-l-4 border-gray-300 dark:border-gray-600 italic my-6 text-gray-700 dark:text-gray-300">${next(node.content)}</blockquote>`,
+    [BLOCKS.HR]: () => 
+      `<hr class="my-8 border-t border-gray-200 dark:border-gray-700">`,
+    [BLOCKS.TABLE]: (node, next) => 
+      `<div class="overflow-x-auto mb-6"><table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg">${next(node.content)}</table></div>`,
+    [BLOCKS.TABLE_ROW]: (node, next) => 
+      `<tr class="bg-white dark:bg-gray-800">${next(node.content)}</tr>`,
+    [BLOCKS.TABLE_CELL]: (node, next) => 
+      `<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-700">${next(node.content)}</td>`,
+    [BLOCKS.TABLE_HEADER_CELL]: (node, next) => 
+      `<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-700">${next(node.content)}</th>`,
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      if (node.data && node.data.target && node.data.target.fields) {
+        const { file, title, description } = node.data.target.fields;
+        const url = file?.url;
+        const alt = description || title || 'Image intégrée';
+        
+        if (url) {
+          if (file.contentType.startsWith('image/')) {
+            return `<img src="${url}" alt="${alt}" class="my-6 rounded-lg max-w-full h-auto shadow-md" />`;
+          } else if (file.contentType.startsWith('video/')) {
+            return `<video src="${url}" controls class="my-6 rounded-lg max-w-full shadow-md"><p>Votre navigateur ne prend pas en charge les vidéos HTML5.</p></video>`;
+          }
+        }
+      }
+      return `<div class="bg-gray-100 dark:bg-gray-800 p-4 my-6 rounded-lg text-center text-gray-500 dark:text-gray-400">Contenu média non disponible</div>`;
+    },
+    [INLINES.HYPERLINK]: (node, next) => {
+      const { uri } = node.data;
+      const isExternal = uri.startsWith('http');
+      const externalProps = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${uri}" ${externalProps} class="text-blue-600 dark:text-blue-400 hover:underline">${next(node.content)}</a>`;
+    },
+    [INLINES.ENTRY_HYPERLINK]: (node, next) => {
+      // Lien vers un autre article
+      if (node.data && node.data.target && node.data.target.fields && node.data.target.fields.slug) {
+        const slug = node.data.target.fields.slug;
+        return `<a href="/blog/${slug}" class="text-blue-600 dark:text-blue-400 hover:underline">${next(node.content)}</a>`;
+      }
+      return next(node.content);
+    },
+  }
+};
+
+// Convertir le contenu Rich Text en HTML
+let contentHtml = '';
+if (article.fields.content) {
+  contentHtml = documentToHtmlString(article.fields.content, richTextOptions);
+}
+
+// Fonction pour formater la date
+function formatDate(dateString) {
+  if (!dateString) return '';
+  return new Date(dateString).toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 }
 
-// Récupérer les propriétés depuis getStaticPaths
-const { article } = Astro.props;
+// Récupérer quelques articles similaires (par catégorie)
+const similarArticles = await getArticles({
+  limit: 3,
+  'fields.category': article.fields.category,
+  'sys.id[ne]': article.sys.id // Exclure l'article courant
+});
 ---
 
 <BaseLayout
-  title={`${article.title} - Blog NJI Auto Pro`}
-  description={article.excerpt}
+  title={`${article.fields.title} - Expertise Automobile - NJI Auto Pro`}
+  description={article.fields.excerpt || ''}
 >
   <!-- Hero Section -->
   <section class="pt-24 pb-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -226,31 +137,31 @@ const { article } = Astro.props;
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Retour au blog
+            Retour à l'expertise automobile
           </a>
         </div>
         
         <div class="flex items-center mb-4">
           <span class="inline-block px-3 py-1 bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] text-sm font-medium rounded-full">
-            {article.category}
+            {article.fields.category || 'Expertise'}
           </span>
           <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
-          <span class="text-sm text-gray-500 dark:text-gray-400">{article.date}</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400">{formatDate(article.fields.publicationDate)}</span>
           <span class="mx-2 text-gray-300 dark:text-gray-600">•</span>
-          <span class="text-sm text-gray-500 dark:text-gray-400">{article.readingTime} de lecture</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400">{article.fields.readingTime || '5 min de lecture'}</span>
         </div>
         
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 dark:text-white mb-6 leading-tight">
-          {article.title}
+          {article.fields.title}
         </h1>
         
         <div class="flex items-center mb-8">
           <div class="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 mr-4 flex items-center justify-center">
-            <span class="text-sm text-gray-500 dark:text-gray-400">{article.author.initials}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{article.fields.authorInitials || article.fields.author?.[0] || '?'}</span>
           </div>
           <div>
-            <p class="font-medium text-gray-900 dark:text-white">{article.author.name}</p>
-            <p class="text-sm text-gray-500 dark:text-gray-400">{article.author.title}</p>
+            <p class="font-medium text-gray-900 dark:text-white">{article.fields.author || 'Auteur'}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">{article.fields.authorTitle || 'Expert automobile'}</p>
           </div>
         </div>
       </div>
@@ -262,12 +173,20 @@ const { article } = Astro.props;
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <!-- Image principale -->
-        <div class="aspect-video bg-gray-200 dark:bg-gray-700 rounded-xl mb-10 flex items-center justify-center">
-          <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
-        </div>
+        {article.fields.featuredImage ? (
+          <img 
+            src={`${article.fields.featuredImage.fields.file.url}?w=1200&h=630&fit=fill&f=faces`}
+            alt={article.fields.featuredImage.fields.title || article.fields.title}
+            class="w-full h-auto aspect-video object-cover rounded-xl mb-10 shadow-md"
+          />
+        ) : (
+          <div class="aspect-video bg-gray-200 dark:bg-gray-700 rounded-xl mb-10 flex items-center justify-center">
+            <span class="text-gray-500 dark:text-gray-400">Image non disponible</span>
+          </div>
+        )}
         
         <!-- Contenu -->
-        <article class="prose prose-lg dark:prose-invert max-w-none mb-12" set:html={article.content} />
+        <article class="rich-text-content mb-12" set:html={contentHtml} />
         
         <!-- Tags -->
         <div class="mb-12">
@@ -276,9 +195,11 @@ const { article } = Astro.props;
             <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm rounded-full">
               #automobile
             </span>
-            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm rounded-full">
-              #{article.category.toLowerCase()}
-            </span>
+            {article.fields.category && (
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm rounded-full">
+                #{article.fields.category.toLowerCase().replace(/\s+/g, '-')}
+              </span>
+            )}
             <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-sm rounded-full">
               #professionnels
             </span>
@@ -292,30 +213,30 @@ const { article } = Astro.props;
         <div class="border-t border-gray-200 dark:border-gray-700 pt-8 mb-12">
           <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Partager cet article</h3>
           <div class="flex space-x-4">
-            <a href="#" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
             </a>
-            <a href="#" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.fields.title)}&url=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
               </svg>
             </a>
-            <a href="#" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>
                 <circle cx="4" cy="4" r="2"></circle>
               </svg>
             </a>
-            <a href="#" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <button onclick={`navigator.clipboard.writeText('${Astro.url.href}'); alert('Lien copié!');`} class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                 <polyline points="16 6 12 2 8 6"></polyline>
                 <line x1="12" y1="2" x2="12" y2="15"></line>
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -331,86 +252,47 @@ const { article } = Astro.props;
         </h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Article 1 -->
-          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+          {similarArticles.length > 0 ? (
+            similarArticles.map((relatedArticle) => (
+              <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
+                <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
+                  {relatedArticle.fields.featuredImage ? (
+                    <img 
+                      src={`${relatedArticle.fields.featuredImage.fields.file.url}?w=400&h=225&fit=fill&f=faces`}
+                      alt={relatedArticle.fields.featuredImage.fields.title || relatedArticle.fields.title}
+                      class="object-cover w-full h-full"
+                    />
+                  ) : (
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
+                    </div>
+                  )}
+                  <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
+                      {relatedArticle.fields.category || 'Expertise'}
+                    </span>
+                  </div>
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center mb-2">
+                    <span class="text-sm text-gray-500 dark:text-gray-400">{formatDate(relatedArticle.fields.publicationDate)}</span>
+                  </div>
+                  <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                    <a href={`/blog/${relatedArticle.fields.slug}`}>
+                      {relatedArticle.fields.title}
+                    </a>
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                    {relatedArticle.fields.excerpt || 'Description non disponible'}
+                  </p>
+                </div>
               </div>
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
-                  Marché automobile
-                </span>
-              </div>
+            ))
+          ) : (
+            <div class="col-span-3 bg-white dark:bg-gray-900 rounded-xl p-8 text-center">
+              <p class="text-gray-600 dark:text-gray-300">Aucun article similaire pour le moment.</p>
             </div>
-            <div class="p-5">
-              <div class="flex items-center mb-2">
-                <span class="text-sm text-gray-500 dark:text-gray-400">15 mars 2025</span>
-              </div>
-              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                <a href="/blog/tendances-marche-premium-2025">
-                  Tendances du marché premium au premier trimestre 2025
-                </a>
-              </h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                Analyse des ventes et perspectives pour les marques premium sur le marché européen.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Article 2 -->
-          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
-              </div>
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
-                  Technologie
-                </span>
-              </div>
-            </div>
-            <div class="p-5">
-              <div class="flex items-center mb-2">
-                <span class="text-sm text-gray-500 dark:text-gray-400">10 mars 2025</span>
-              </div>
-              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                <a href="/blog/intelligence-artificielle-reprise-auto">
-                  L'IA révolutionne l'estimation de reprise
-                </a>
-              </h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                Comment les algorithmes prédictifs changent la donne pour les professionnels de la reprise.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Article 3 -->
-          <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-            <div class="aspect-video bg-gray-200 dark:bg-gray-700 relative">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <span class="text-gray-500 dark:text-gray-400">Image de l'article</span>
-              </div>
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-[var(--color-primary-700)]/80 text-white text-xs font-medium rounded-full">
-                  Conseils pro
-                </span>
-              </div>
-            </div>
-            <div class="p-5">
-              <div class="flex items-center mb-2">
-                <span class="text-sm text-gray-500 dark:text-gray-400">5 mars 2025</span>
-              </div>
-              <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                <a href="/blog/optimiser-rotation-stock">
-                  5 stratégies pour optimiser la rotation de votre stock
-                </a>
-              </h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                Méthodes éprouvées pour accélérer la vente et maximiser la rentabilité de votre parc.
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -452,3 +334,143 @@ const { article } = Astro.props;
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Styles supplémentaires pour le contenu Rich Text */
+  .rich-text-content :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-700);
+  }
+  
+  .rich-text-content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .rich-text-content :global(p) {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+  
+  .rich-text-content :global(a) {
+    color: var(--color-primary-700);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .rich-text-content :global(a:hover) {
+    text-decoration: underline;
+  }
+  
+  .rich-text-content :global(ul), 
+  .rich-text-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  
+  .rich-text-content :global(ul) {
+    list-style-type: disc;
+  }
+  
+  .rich-text-content :global(ol) {
+    list-style-type: decimal;
+  }
+  
+  .rich-text-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  
+  .rich-text-content :global(blockquote) {
+    border-left: 4px solid var(--color-primary-700);
+    padding-left: 1rem;
+    font-style: italic;
+    margin: 1.5rem 0;
+    color: #4b5563;
+  }
+  
+  .rich-text-content :global(pre) {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  
+  .rich-text-content :global(code) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875rem;
+    background-color: #f3f4f6;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+  }
+  
+  .rich-text-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .rich-text-content :global(hr) {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+  }
+  
+  .rich-text-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  
+  .rich-text-content :global(th),
+  .rich-text-content :global(td) {
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .rich-text-content :global(th) {
+    background-color: #f9fafb;
+    font-weight: 600;
+  }
+  
+  /* Styles pour le mode sombre */
+  :global(.dark) .rich-text-content :global(h2),
+  :global(.dark) .rich-text-content :global(h3) {
+    color: #f3f4f6;
+  }
+  
+  :global(.dark) .rich-text-content :global(a) {
+    color: var(--color-primary-400, #60a5fa);
+  }
+  
+  :global(.dark) .rich-text-content :global(blockquote) {
+    color: #d1d5db;
+    border-left-color: var(--color-primary-400, #60a5fa);
+  }
+  
+  :global(.dark) .rich-text-content :global(pre),
+  :global(.dark) .rich-text-content :global(code) {
+    background-color: #374151;
+    color: #e5e7eb;
+  }
+  
+  :global(.dark) .rich-text-content :global(th),
+  :global(.dark) .rich-text-content :global(td) {
+    border-color: #4b5563;
+  }
+  
+  :global(.dark) .rich-text-content :global(th) {
+    background-color: #374151;
+  }
+  
+  :global(.dark) .rich-text-content :global(hr) {
+    border-color: #4b5563;
+  }
+</style>

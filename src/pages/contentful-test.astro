@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { contentfulClient } from "../lib/contentful";
+
+let errorMessage = null;
+let success = false;
+let contentTypes = [];
+let spaceInfo = null;
+
+try {
+  // Test simple d'accès à l'API Contentful
+  const space = await contentfulClient.getSpace();
+  spaceInfo = {
+    name: space.name,
+    id: space.sys.id
+  };
+  success = true;
+  
+  try {
+    // Récupérer les types de contenu disponibles
+    const types = await contentfulClient.getContentTypes();
+    contentTypes = types.items.map(type => ({
+      name: type.name,
+      id: type.sys.id,
+      fields: type.fields.map(field => ({
+        id: field.id,
+        name: field.name,
+        type: field.type
+      }))
+    }));
+  } catch (typesError) {
+    console.error('Erreur lors de la récupération des types de contenu:', typesError);
+    errorMessage = errorMessage || `Erreur lors de la récupération des types de contenu: ${typesError.message}`;
+  }
+} catch (error) {
+  console.error('Erreur de connexion à Contentful:', error);
+  errorMessage = error.message || 'Erreur inconnue';
+}
+---
+
+<BaseLayout title="Test Contentful">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8">Test de connexion Contentful</h1>
+    
+    {success ? (
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+        <p class="font-bold">Connexion réussie</p>
+        <p>La connexion à l'API Contentful fonctionne correctement.</p>
+        {spaceInfo && (
+          <p class="mt-2">Espace : <strong>{spaceInfo.name}</strong> (ID: {spaceInfo.id})</p>
+        )}
+      </div>
+    ) : (
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+        <p class="font-bold">Erreur de connexion</p>
+        <p>La connexion à l'API Contentful a échoué avec l'erreur suivante :</p>
+        <pre class="mt-2 bg-red-50 p-2 rounded overflow-auto max-h-64">{errorMessage}</pre>
+      </div>
+    )}
+    
+    <div class="mt-8">
+      <h2 class="text-2xl font-bold mb-4">Types de contenu disponibles</h2>
+      
+      {contentTypes.length > 0 ? (
+        <div>
+          <p class="mb-4">Types de contenu trouvés : <strong>{contentTypes.length}</strong></p>
+          <div class="grid gap-6">
+            {contentTypes.map(type => (
+              <div class="border rounded-lg p-4 bg-white shadow-sm">
+                <h3 class="text-xl font-semibold mb-2">{type.name}</h3>
+                <p class="mb-4">
+                  <span class="font-medium">ID du type de contenu : </span>
+                  <code class="bg-gray-100 px-2 py-1 rounded text-red-600 font-mono">{type.id}</code>
+                  <span class="ml-2 text-sm text-gray-500">(Utilisez cet ID dans le code)</span>
+                </p>
+                
+                <details>
+                  <summary class="cursor-pointer text-blue-600 hover:text-blue-800">
+                    Voir les champs ({type.fields.length})
+                  </summary>
+                  <div class="mt-3 pl-4 border-l-2 border-gray-200">
+                    <ul class="space-y-2">
+                      {type.fields.map(field => (
+                        <li>
+                          <span class="font-medium">{field.name}</span> 
+                          <span class="text-sm text-gray-600">({field.id})</span>
+                          <span class="ml-2 text-xs px-2 py-0.5 bg-gray-100 rounded">{field.type}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+          <p class="text-yellow-700">
+            <strong>Aucun type de contenu trouvé</strong> - Vous devez d'abord créer un modèle de contenu dans Contentful.
+          </p>
+          <ol class="mt-3 list-decimal pl-5 space-y-2 text-yellow-800">
+            <li>Allez dans Contentful > Content model</li>
+            <li>Cliquez sur "Add content type"</li>
+            <li>Nommez votre type "Article" (ou autre chose)</li>
+            <li>Définissez un ID (par ex. "article")</li>
+            <li>Ajoutez les champs nécessaires (title, slug, etc.)</li>
+            <li>N'oubliez pas de cliquer sur "Save" puis "Publish"</li>
+          </ol>
+        </div>
+      )}
+    </div>
+    
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">Variables d'environnement</h2>
+      <p class="mb-4">Vérifiez que vos variables d'environnement sont correctement définies :</p>
+      
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          <strong>CONTENTFUL_SPACE_ID:</strong> 
+          {import.meta.env.CONTENTFUL_SPACE_ID ? (
+            <span class="text-green-600">Défini ({import.meta.env.CONTENTFUL_SPACE_ID}) ✓</span>
+          ) : (
+            <span class="text-red-600">Non défini ✗</span>
+          )}
+        </li>
+        <li>
+          <strong>CONTENTFUL_ACCESS_TOKEN:</strong> 
+          {import.meta.env.CONTENTFUL_ACCESS_TOKEN ? (
+            <span class="text-green-600">Défini (premières lettres: {import.meta.env.CONTENTFUL_ACCESS_TOKEN.substring(0, 4)}...) ✓</span>
+          ) : (
+            <span class="text-red-600">Non défini ✗</span>
+          )}
+        </li>
+        <li>
+          <strong>CONTENTFUL_ENVIRONMENT:</strong> 
+          {import.meta.env.CONTENTFUL_ENVIRONMENT ? (
+            <span class="text-green-600">Défini ({import.meta.env.CONTENTFUL_ENVIRONMENT}) ✓</span>
+          ) : (
+            <span class="text-yellow-600">Non défini (utilisation de "master" par défaut) ⚠️</span>
+          )}
+        </li>
+      </ul>
+    </div>
+    
+    <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded">
+      <h3 class="text-lg font-semibold text-blue-800 mb-2">Étapes suivantes</h3>
+      <p class="mb-4">Une fois que vous avez créé un modèle de contenu dans Contentful :</p>
+      <ol class="list-decimal pl-5 space-y-1">
+        <li>Copiez l'ID exact du type de contenu (sensible à la casse)</li>
+        <li>Modifiez le fichier <code class="bg-blue-100 px-1.5 py-0.5 rounded">src/lib/contentful.ts</code></li>
+        <li>Remplacez la valeur de <code class="bg-blue-100 px-1.5 py-0.5 rounded">CONTENT_TYPE_ID</code> par l'ID copié</li>
+        <li>Redémarrez le serveur de développement</li>
+      </ol>
+    </div>
+  </div>
+</BaseLayout>

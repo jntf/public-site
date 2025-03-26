@@ -143,18 +143,6 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
         </div>
       </div>
 
-      <a
-        href="/services"
-        class:list={[
-          "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
-          {
-            "text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)] font-semibold":
-              Astro.url.pathname.startsWith("/services"),
-          },
-        ]}
-      >
-        Services
-      </a>
       <!-- Menu À propos avec dropdown élaboré style Supabase -->
       <div class="relative group" id="about-menu-container">
         <a
@@ -210,6 +198,21 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
           </div>
         </div>
       </div>
+
+      <!-- Menu Blog -->
+      <a
+      href="/blog"
+      class:list={[
+        "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
+        {
+          "text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)] font-semibold":
+            Astro.url.pathname.startsWith("/services"),
+        },
+      ]}
+    >
+      Articles
+    </a>
+      <!-- Menu Véhicules -->
       <a
         href="/vehicules"
         class:list={[
