@@ -113,31 +113,35 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
             stroke-linejoin="round"
             class="ml-1"
           >
-            <path d="m6 9 6 6 6-6" />
+            <path d="m6 9 6 6 6-6"></path>
           </svg>
         </a>
 
-        <div class="absolute left-0 mt-2 w-[600px] rounded-md bg-white dark:bg-gray-800 shadow-xl ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 overflow-hidden">
+        <div
+          class="absolute left-0 mt-2 w-[600px] rounded-md bg-white dark:bg-gray-800 shadow-xl ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 overflow-hidden"
+        >
           <div class="p-4">
             <div class="grid grid-cols-2 gap-4">
-              {homeMenuItems.map((item) => (
-                <a
-                  href={`/#${item.id}`}
-                  class="relative flex items-start gap-3 p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150 group/link"
-                >
-                  <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-[var(--color-primary-700)] group-hover/link:border-[var(--color-primary-700)]/30 group-hover/link:bg-[var(--color-primary-700)]/10">
-                    <Icon name={item.icon} class="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-gray-900 dark:text-white">
-                      {item.name}
+              {
+                homeMenuItems.map((item) => (
+                  <a
+                    href={`/#${item.id}`}
+                    class="relative flex items-start gap-3 p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150 group/link"
+                  >
+                    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-[var(--color-primary-700)] group-hover/link:border-[var(--color-primary-700)]/30 group-hover/link:bg-[var(--color-primary-700)]/10">
+                      <Icon name={item.icon} class="h-5 w-5" />
                     </div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400">
-                      {item.description}
+                    <div>
+                      <div class="font-medium text-gray-900 dark:text-white">
+                        {item.name}
+                      </div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">
+                        {item.description}
+                      </div>
                     </div>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -169,31 +173,35 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
             stroke-linejoin="round"
             class="ml-1"
           >
-            <path d="m6 9 6 6 6-6" />
+            <path d="m6 9 6 6 6-6"></path>
           </svg>
         </a>
 
-        <div class="absolute left-0 mt-2 w-[600px] rounded-md bg-white dark:bg-gray-800 shadow-xl ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 overflow-hidden">
+        <div
+          class="absolute left-0 mt-2 w-[600px] rounded-md bg-white dark:bg-gray-800 shadow-xl ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50 overflow-hidden"
+        >
           <div class="p-4">
             <div class="grid grid-cols-2 gap-4">
-              {aboutMenuItems.map((item) => (
-                <a
-                  href={`/a-propos#${item.id}`}
-                  class="relative flex items-start gap-3 p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150 group/link"
-                >
-                  <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-[var(--color-primary-700)] group-hover/link:border-[var(--color-primary-700)]/30 group-hover/link:bg-[var(--color-primary-700)]/10">
-                    <Icon name={item.icon} class="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div class="font-medium text-gray-900 dark:text-white">
-                      {item.name}
+              {
+                aboutMenuItems.map((item) => (
+                  <a
+                    href={`/a-propos#${item.id}`}
+                    class="relative flex items-start gap-3 p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150 group/link"
+                  >
+                    <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-[var(--color-primary-700)] group-hover/link:border-[var(--color-primary-700)]/30 group-hover/link:bg-[var(--color-primary-700)]/10">
+                      <Icon name={item.icon} class="h-5 w-5" />
                     </div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400">
-                      {item.description}
+                    <div>
+                      <div class="font-medium text-gray-900 dark:text-white">
+                        {item.name}
+                      </div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">
+                        {item.description}
+                      </div>
                     </div>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -201,17 +209,17 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
 
       <!-- Menu Blog -->
       <a
-      href="/blog"
-      class:list={[
-        "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
-        {
-          "text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)] font-semibold":
-            Astro.url.pathname.startsWith("/services"),
-        },
-      ]}
-    >
-      Articles
-    </a>
+        href="/blog"
+        class:list={[
+          "text-gray-600 hover:text-[var(--color-primary-700)] dark:text-gray-300 dark:hover:text-[var(--color-primary-700)] transition-colors text-sm font-medium",
+          {
+            "text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)] font-semibold":
+              Astro.url.pathname.startsWith("/services"),
+          },
+        ]}
+      >
+        Articles
+      </a>
       <!-- Menu Véhicules -->
       <a
         href="/vehicules"
@@ -315,21 +323,25 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
               stroke-linejoin="round"
               class="chevron-icon"
             >
-              <path d="m6 9 6 6 6-6" />
+              <path d="m6 9 6 6 6-6"></path>
             </svg>
           </button>
         </div>
 
-        <div class="mobile-section-submenu hidden pl-4 border-l-2 border-gray-100 dark:border-gray-700 ml-3 mt-1">
+        <div
+          class="mobile-section-submenu hidden pl-4 border-l-2 border-gray-100 dark:border-gray-700 ml-3 mt-1"
+        >
           <div class="grid gap-2">
-            {homeMenuItems.map((item) => (
-              <a
-                href={`/#${item.id}`}
-                class="py-2 px-3 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-[var(--color-primary-700)] dark:hover:text-[var(--color-primary-700)]"
-              >
-                <span>{item.name}</span>
-              </a>
-            ))}
+            {
+              homeMenuItems.map((item) => (
+                <a
+                  href={`/#${item.id}`}
+                  class="py-2 px-3 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-[var(--color-primary-700)] dark:hover:text-[var(--color-primary-700)]"
+                >
+                  <span>{item.name}</span>
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -366,24 +378,41 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
               stroke-linejoin="round"
               class="chevron-icon"
             >
-              <path d="m6 9 6 6 6-6" />
+              <path d="m6 9 6 6 6-6"></path>
             </svg>
           </button>
         </div>
 
-        <div class="mobile-section-submenu hidden pl-4 border-l-2 border-gray-100 dark:border-gray-700 ml-3 mt-1">
+        <div
+          class="mobile-section-submenu hidden pl-4 border-l-2 border-gray-100 dark:border-gray-700 ml-3 mt-1"
+        >
           <div class="grid gap-2">
-            {aboutMenuItems.map((item) => (
-              <a
-                href={`/a-propos#${item.id}`}
-                class="py-2 px-3 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-[var(--color-primary-700)] dark:hover:text-[var(--color-primary-700)]"
-              >
-                <span>{item.name}</span>
-              </a>
-            ))}
+            {
+              aboutMenuItems.map((item) => (
+                <a
+                  href={`/a-propos#${item.id}`}
+                  class="py-2 px-3 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-[var(--color-primary-700)] dark:hover:text-[var(--color-primary-700)]"
+                >
+                  <span>{item.name}</span>
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
+
+      <a
+        href="/blog"
+        class:list={[
+          "py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800",
+          {
+            "bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)]":
+              Astro.url.pathname.startsWith("/services"),
+          },
+        ]}
+      >
+        Articles
+      </a>
 
       <a
         href="/vehicules"
@@ -397,19 +426,7 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
       >
         Véhicules
       </a>
-      <a
-        href="/services"
-        class:list={[
-          "py-2 px-3 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800",
-          {
-            "bg-[var(--color-primary-700)]/10 text-[var(--color-primary-700)] dark:text-[var(--color-primary-700)]":
-              Astro.url.pathname.startsWith("/services"),
-          },
-        ]}
-      >
-        Services
-      </a>
-      
+
       <a
         href="/contact"
         class:list={[
@@ -491,19 +508,19 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
           e.preventDefault();
           const parent = toggle.closest(".mobile-section-menu");
           if (!parent) return;
-          
+
           const submenu = parent.querySelector(".mobile-section-submenu");
           if (!submenu) return;
-          
+
           const chevron = toggle.querySelector(".chevron-icon");
-          
+
           // Toggle submenu
           submenu.classList.toggle("hidden");
-          
+
           // Rotate chevron icon if available
           if (chevron instanceof HTMLElement) {
-            chevron.style.transform = submenu.classList.contains("hidden") 
-              ? "rotate(0deg)" 
+            chevron.style.transform = submenu.classList.contains("hidden")
+              ? "rotate(0deg)"
               : "rotate(180deg)";
           }
         });
@@ -525,7 +542,7 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
     // Fonction pour gérer le défilement fluide vers les ancres
     function handleSmoothScroll(e, href) {
       e.preventDefault();
-      
+
       // Fermer le menu mobile si ouvert
       if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
         mobileMenu.classList.add("hidden");
@@ -537,9 +554,9 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
           `;
         }
       }
-      
+
       // Extraire l'ID de l'ancre
-      const targetId = href.split('#')[1];
+      const targetId = href.split("#")[1];
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
@@ -564,12 +581,15 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
       anchor.addEventListener("click", (e) => {
         const anchorElement = e.currentTarget;
         if (!(anchorElement instanceof HTMLAnchorElement)) return;
-        
+
         const href = anchorElement.getAttribute("href");
         if (!href) return;
-        
+
         // Si nous sommes déjà sur la page d'accueil, utiliser le comportement de scroll fluide
-        if (window.location.pathname === "/" || window.location.pathname === "") {
+        if (
+          window.location.pathname === "/" ||
+          window.location.pathname === ""
+        ) {
           handleSmoothScroll(e, href);
         }
         // Sinon, laisser le lien naviguer normalement vers l'URL avec ancre
@@ -581,10 +601,10 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
       anchor.addEventListener("click", (e) => {
         const anchorElement = e.currentTarget;
         if (!(anchorElement instanceof HTMLAnchorElement)) return;
-        
+
         const href = anchorElement.getAttribute("href");
         if (!href) return;
-        
+
         // Si nous sommes déjà sur la page À propos, utiliser le comportement de scroll fluide
         if (window.location.pathname === "/a-propos") {
           handleSmoothScroll(e, href);
