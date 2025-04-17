@@ -251,10 +251,11 @@ const isAboutPage = Astro.url.pathname === "/a-propos";
     <div class="flex items-center gap-4">
       <!-- Login/Signup -->
       <div class="hidden md:flex items-center space-x-4">
-        <Button variant="ghost" size="sm" href="app.njiautopro.com/auth/login">
+        <!-- redirect to www.app.njiautopro.com/auth/login -->
+        <Button variant="ghost" size="sm" href="https://www.app.njiautopro.com/auth/login">
           Connexion
         </Button>
-        <Button variant="green" size="sm" href="app.njiautopro.com/auth/register">
+        <Button variant="green" size="sm" href="https://www.app.njiautopro.com/auth/register">
           Inscription
         </Button>
       </div>
