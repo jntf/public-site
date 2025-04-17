@@ -2,7 +2,7 @@
 // Composant logo avec animation et police Nico Moji
 ---
 
-<div class="flex items-center">
+<!-- <div class="flex items-center">
   <div class="relative mr-2">
     <div class="absolute inset-0 rounded-full bg-[var(--color-primary-700)]/30 animate-logo-pulse opacity-90 origin-center transform scale-90 dark:shadow-primary-glow shadow-primary-glow-light"></div>
     <div class="relative z-10 bg-[var(--color-primary-700)] text-white w-9 h-9 rounded-full flex items-center justify-center font-nicomoji text-xl shadow-md dark:text-black dark:shadow-gray-700/50 shadow-gray-300/50">
@@ -12,4 +12,58 @@
   <div class="font-nicomoji text-md leading-none">
     <span class="text-gray-900 dark:text-white">auto pro</span>
   </div>
+</div> -->
+
+<div class="flex items-center gap-3">
+  <div class="relative">
+    <!-- Effet de pulsation double couche pour meilleure visibilité -->
+    <div
+      class="absolute inset-0 rounded-full bg-black/20 dark:bg-white/20 animate-logo-pulse-outer origin-center" />
+    <div
+      class="absolute inset-0 rounded-full bg-black/30 dark:bg-white/40 animate-logo-pulse-inner origin-center" />
+
+    <!-- Cercle principal -->
+    <div
+      class="relative z-10 bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] text-white dark:text-black w-10 h-10 rounded-full flex items-center justify-center font-nicomoji text-2xl shadow-lg">
+      Nji
+    </div>
+  </div>
+
+  <!-- Texte du logo -->
+  <div class="font-nicomoji text-md leading-none">
+    <span class="text-primary-900 dark:text-primary-400">auto pro</span>
+  </div>
 </div>
+
+<style>
+@keyframes logo-pulse-outer {
+  0%, 100% {
+    transform: scale(1.3);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.15;
+  }
+}
+
+@keyframes logo-pulse-inner {
+  0%, 100% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.2;
+  }
+}
+
+.animate-logo-pulse-outer {
+  animation: logo-pulse-outer 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-logo-pulse-inner {
+  animation: logo-pulse-inner 3s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.5s;
+  /* décalage de phase */
+}
+</style>

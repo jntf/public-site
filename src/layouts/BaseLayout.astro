@@ -1,8 +1,8 @@
 ---
-import { SEO } from 'astro-seo';
-import Header from '../components/core/Header.astro';
-import Footer from '../components/core/Footer.astro';
-import '../styles/global.css';
+import { SEO } from "astro-seo";
+import Header from "../components/core/Header.astro";
+import Footer from "../components/core/Footer.astro";
+import "../styles/global.css";
 
 // Props pour le SEO et le contenu
 export interface Props {
@@ -25,13 +25,19 @@ const {
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
+    <!-- Favicons -->
+    <link rel="icon" href="favicon/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
     <SEO
       title={title}
       description={description}
@@ -44,7 +50,7 @@ const {
         },
         optional: {
           description: description,
-        }
+        },
       }}
       twitter={{
         card: "summary_large_image",
@@ -56,14 +62,24 @@ const {
         meta: [
           { name: "theme-color", content: "#6DD8A4" },
           { name: "mobile-web-app-capable", content: "yes" },
-          { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+          {
+            name: "apple-mobile-web-app-status-bar-style",
+            content: "black-translucent",
+          },
           ...(noIndex ? [{ name: "robots", content: "noindex" }] : []),
           ...(noFollow ? [{ name: "robots", content: "nofollow" }] : []),
         ],
         link: [
           { rel: "preconnect", href: "https://fonts.googleapis.com" },
-          { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" },
-          { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" },
+          {
+            rel: "preconnect",
+            href: "https://fonts.gstatic.com",
+            crossorigin: "anonymous",
+          },
+          {
+            rel: "stylesheet",
+            href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap",
+          },
         ],
       }}
     />
