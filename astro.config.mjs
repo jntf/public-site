@@ -15,7 +15,24 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [playformCompress(), sitemap(), prefetch(), partytown(), icon(), robotsTxt(), mdx(), react(), vue()],
+  integrations: [
+    playformCompress(), 
+    sitemap(), 
+    prefetch(), 
+    partytown(), 
+    icon(), 
+    robotsTxt({
+      policy: [
+        {
+          userAgent: '*',
+          disallow: '/',
+        },
+      ],
+    }), 
+    mdx(), 
+    react(), 
+    vue()
+  ],
 
   vite: {
     plugins: [tailwindcss()]
