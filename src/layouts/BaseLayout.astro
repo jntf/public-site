@@ -1,4 +1,12 @@
 ---
+// Pour activer la protection par mot de passe (`PasswordProtection.astro`) sur l'ensemble du site,
+// toutes les pages utilisant ce layout doivent être rendues côté serveur (SSR).
+// Cela permet au composant de traiter la soumission du formulaire POST.
+// Lorsque vous supprimez la protection par mot de passe, commentez ou supprimez la ligne
+// `export const prerender = false;` ci-dessous pour que les pages redeviennent statiques (SSG), 
+// sauf si elles ont d'autres raisons d'être SSR.
+export const prerender = false;
+
 import { SEO } from "astro-seo";
 import Header from "../components/core/Header.astro";
 import Footer from "../components/core/Footer.astro";
