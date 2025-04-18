@@ -2,7 +2,9 @@
 import { SEO } from "astro-seo";
 import Header from "../components/core/Header.astro";
 import Footer from "../components/core/Footer.astro";
+import PasswordProtection from "../components/auth/PasswordProtection.astro";
 import "../styles/global.css";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 
 // Props pour le SEO et le contenu
 export interface Props {
@@ -85,6 +87,8 @@ const {
     />
   </head>
   <body class="bg-white dark:bg-gray-900">
+    <PasswordProtection />
+    <SpeedInsights />
     <Header />
     <main>
       <slot />
